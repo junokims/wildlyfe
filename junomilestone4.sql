@@ -1,26 +1,27 @@
-DROP TABLE IF EXISTS Typehost;
-DROP TABLE IF EXISTS Visitor;
-DROP TABLE IF EXISTS Events;
-DROP TABLE IF EXISTS Employee;
-DROP TABLE IF EXISTS Enclosure;
-DROP TABLE IF EXISTS Species;
-DROP TABLE IF EXISTS EventTypeBudget;
-DROP TABLE IF EXISTS VisitorHasContactInformation;
+DROP TABLE IF EXISTS Feeds;
+DROP TABLE IF EXISTS Eats;
 DROP TABLE IF EXISTS AnimalLivesIn;
-DROP TABLE IF EXISTS PurchaseEntry;
-DROP TABLE IF EXISTS FoodItem;
-DROP TABLE IF EXISTS AnimalCaretaker;
-DROP TABLE IF EXISTS OutdoorWorker;
+DROP TABLE IF EXISTS Enclosure;
 DROP TABLE IF EXISTS Attends;
 DROP TABLE IF EXISTS Plans;
+DROP TABLE IF EXISTS AnimalCaretaker;
+DROP TABLE IF EXISTS OutdoorWorker;
 DROP TABLE IF EXISTS OfficeWorker;
 DROP TABLE IF EXISTS EventCoordinator;
 DROP TABLE IF EXISTS HR;
 DROP TABLE IF EXISTS TicketClerk;
 DROP TABLE IF EXISTS Sells;
 DROP TABLE IF EXISTS Volunteer;
-DROP TABLE IF EXISTS Eats;
-DROP TABLE IF EXISTS Feeds;
+DROP TABLE IF EXISTS Events;
+DROP TABLE IF EXISTS Employee;
+DROP TABLE IF EXISTS TypeHost;
+DROP TABLE IF EXISTS Enclosure;
+DROP TABLE IF EXISTS Species;
+DROP TABLE IF EXISTS EventTypeBudget;
+DROP TABLE IF EXISTS VisitorHasContactInformation;
+DROP TABLE IF EXISTS PurchaseEntry;
+DROP TABLE IF EXISTS FoodItem;
+DROP TABLE IF EXISTS Visitor;
 
 CREATE TABLE Enclosure(
     Enclosure_ID CHAR(20),
@@ -63,7 +64,7 @@ CREATE TABLE Employee(
       DOB DATE,
       Address char(40),
       Email char(40),
-      Phone_Number INTEGER,
+      Phone_Number char(12),
       PRIMARY KEY (Visitor_ID),
       FOREIGN KEY (Visitor_ID) references Visitor(Visitor_ID) ON DELETE CASCADE);
 
@@ -187,15 +188,15 @@ CREATE TABLE Eats(
     FOREIGN KEY (Food_Item_ID) references FoodItem(Food_Item_ID) ON DELETE CASCADE);
 
   INSERT INTO Enclosure(Enclosure_ID, Maintenance_Date)
-  VALUES ('Lizard Enclosure', to_date('2020-12-17', 'yyyy-mm-dd'));
+  VALUES ('Lizard Enclosure', STR_TO_DATE('2020-12-1', '%Y-%m-%d'));
   INSERT INTO Enclosure(Enclosure_ID, Maintenance_Date)
-  VALUES ('Hedgehog Enclosure', to_date('2020-02-17', 'yyyy-mm-dd'));
+  VALUES ('Hedgehog Enclosure', STR_TO_DATE('2020-02-17', '%Y-%m-%d'));
   INSERT INTO Enclosure(Enclosure_ID, Maintenance_Date)
-  VALUES ('Snake Enclosure', to_date('2020-11-17', 'yyyy-mm-dd'));
+  VALUES ('Snake Enclosure', STR_TO_DATE('2020-11-17', '%Y-%m-%d'));
   INSERT INTO Enclosure(Enclosure_ID, Maintenance_Date)
-  VALUES ('Wolf Enclosure', to_date('2020-12-09', 'yyyy-mm-dd'));
+  VALUES ('Wolf Enclosure', STR_TO_DATE('2020-12-09', '%Y-%m-%d'));
   INSERT INTO Enclosure(Enclosure_ID, Maintenance_Date)
-  VALUES ('Monkey Enclosure', to_date('2020-04-17', 'yyyy-mm-dd'));
+  VALUES ('Monkey Enclosure', STR_TO_DATE('2020-04-17', '%Y-%m-%d'));
 
   INSERT INTO Visitor(Visitor_ID, Demographic)
   VALUES (1, 'Senior');
@@ -209,15 +210,15 @@ CREATE TABLE Eats(
   VALUES (5, 'Adult');
 
   INSERT INTO VisitorHasContactInformation(Visitor_ID, Name, Address, Email, Phone_Number, DOB)
-  VALUES (1, 'Juno Kim', '123 Some Street', 'juno@ubc.ca', 7161234567, to_date('1962-04-01', 'yyyy-mm-dd'));
+  VALUES (1, 'Juno Kim', '123 Some Street', 'juno@ubc.ca', '716-123-4567', STR_TO_DATE('1962-04-01', '%Y-%m-%d'));
   INSERT INTO VisitorHasContactInformation(Visitor_ID, Name, Address, Email, Phone_Number, DOB)
-  VALUES (2, 'Junsun Kim', '123 Some Street', 'junsun@ubc.ca', 7161234567, to_date('2012-04-01', 'yyyy-mm-dd'));
+  VALUES (2, 'Junsun Kim', '123 Some Street', 'junsun@ubc.ca', '716-123-4567', STR_TO_DATE('2012-04-01', '%Y-%m-%d'));
   INSERT INTO VisitorHasContactInformation(Visitor_ID, Name, Address, Email, Phone_Number, DOB)
-  VALUES (3, 'Logan Lapointe', '289 Some Street', 'logan@shaw.ca', 2134567896, to_date('1993-04-01', 'yyyy-mm-dd'));
+  VALUES (3, 'Logan Lapointe', '289 Some Street', 'logan@shaw.ca', '213-456-7896', STR_TO_DATE('1993-04-01', '%Y-%m-%d'));
   INSERT INTO VisitorHasContactInformation(Visitor_ID, Name, Address, Email, Phone_Number, DOB)
-  VALUES (4, 'Riley Bierer', '456 Some Street', 'riles@gmail.ca', 7161234527, to_date('1983-04-01', 'yyyy-mm-dd'));
+  VALUES (4, 'Riley Bierer', '456 Some Street', 'riles@gmail.ca', '716-123-4527', STR_TO_DATE('1983-04-01', '%Y-%m-%d'));
   INSERT INTO VisitorHasContactInformation(Visitor_ID, Name, Address, Email, Phone_Number, DOB)
-  VALUES (5, 'Brian Stephens', '1577 Some Street', 'brianstep@live.ca', 7161276527, to_date('1982-04-01', 'yyyy-mm-dd'));
+  VALUES (5, 'Brian Stephens', '1577 Some Street', 'brianstep@live.ca', '716-127-6527', STR_TO_DATE('1982-04-01', '%Y-%m-%d'));
 
   INSERT INTO TypeHost(Type, Host)
   VALUES ('Party', 'Leslie Gore');
@@ -231,15 +232,15 @@ CREATE TABLE Eats(
   VALUES ('Community Outreach', 'Brita Filter');
 
   INSERT INTO Events(Event_ID, Name_of_Event, Time, Event_date, Location, Number_of_Invitees, Type)
-  VALUES (1, 'Steves Birthday Party', '15:00', to_date('2020-04-01', 'yyyy-mm-dd'), 'West Wing', '20', 'Party');
+  VALUES (1, 'Steves Birthday Party', '15:00', STR_TO_DATE('2020-04-01', '%Y-%m-%d'), 'West Wing', '20', 'Party');
   INSERT INTO Events(Event_ID, Name_of_Event, Time, Event_date, Location, Number_of_Invitees, Type)
-  VALUES (2, 'Als Birthday Party', '15:00', to_date('2020-04-02', 'yyyy-mm-dd'), 'West Wing', '20', 'Party');
+  VALUES (2, 'Als Birthday Party', '15:00', STR_TO_DATE('2020-04-02', '%Y-%m-%d'), 'West Wing', '20', 'Party');
   INSERT INTO Events(Event_ID, Name_of_Event, Time, Event_date, Location, Number_of_Invitees, Type)
-  VALUES (3, 'Rogers Birthday Party', '15:00', to_date('2020-04-03', 'yyyy-mm-dd'), 'West Wing', '20', 'Party');
+  VALUES (3, 'Rogers Birthday Party', '15:00', STR_TO_DATE('2020-04-03', '%Y-%m-%d'), 'West Wing', '20', 'Party');
   INSERT INTO Events(Event_ID, Name_of_Event, Time, Event_date, Location, Number_of_Invitees, Type)
-  VALUES (4, 'Bens Birthday Party', '15:00', to_date('2020-04-04', 'yyyy-mm-dd'), 'West Wing', '20', 'Party');
+  VALUES (4, 'Bens Birthday Party', '15:00', STR_TO_DATE('2020-04-04', '%Y-%m-%d'), 'West Wing', '20', 'Party');
   INSERT INTO Events(Event_ID, Name_of_Event, Time, Event_date, Location, Number_of_Invitees, Type)
-  VALUES (5, 'Cliffords Birthday Party', '15:00', to_date('2020-04-05', 'yyyy-mm-dd'), 'West Wing', '20', 'Party');
+  VALUES (5, 'Cliffords Birthday Party', '15:00', STR_TO_DATE('2020-04-05', '%Y-%m-%d'), 'West Wing', '20', 'Party');
 
 
 INSERT INTO Attends(Visitor_ID, Event_ID)
@@ -254,28 +255,28 @@ INSERT INTO Attends(Visitor_ID, Event_ID)
 VALUES (5,1);
 
 INSERT INTO Employee(Employee_Number, Name, DOB, SIN, Director_Number, Department_Number )
-VALUES (1, 'Laura Ruiz', to_date('1997-01-01', 'yyyy-mm-dd'), 123456789, 1, 1);
+VALUES (1, 'Laura Ruiz', STR_TO_DATE('1997-01-01', '%Y-%m-%d'), 123456789, 1, 1);
 INSERT INTO Employee(Employee_Number, Name, DOB, SIN, Director_Number, Department_Number )
-VALUES (2, 'Lauren Ruiz', to_date('1997-01-01', 'yyyy-mm-dd'), 123456790, 1, 1);
+VALUES (2, 'Lauren Ruiz', STR_TO_DATE('1997-01-01', '%Y-%m-%d'), 123456790, 1, 1);
 INSERT INTO Employee(Employee_Number, Name, DOB, SIN, Director_Number, Department_Number )
-VALUES (3, 'Lara Ruiz', to_date('1997-01-01', 'yyyy-mm-dd'), 123456791, 1, 1);
+VALUES (3, 'Lara Ruiz', STR_TO_DATE('1997-01-01', '%Y-%m-%d'), 123456791, 1, 1);
 INSERT INTO Employee(Employee_Number, Name, DOB, SIN, Director_Number, Department_Number )
-VALUES (4, 'Laurin Ruiz', to_date('1997-01-01', 'yyyy-mm-dd'), 123456792, 1, 1);
+VALUES (4, 'Laurin Ruiz', STR_TO_DATE('1997-01-01', '%Y-%m-%d'), 123456792, 1, 1);
 INSERT INTO Employee(Employee_Number, Name, DOB, SIN, Director_Number, Department_Number )
-VALUES (5, 'Lore Ruiz', to_date('1997-01-01', 'yyyy-mm-dd'), 123456793, 40, 1);
+VALUES (5, 'Lore Ruiz', STR_TO_DATE('1997-01-01', '%Y-%m-%d'), 123456793, 40, 1);
 
 
 
 INSERT INTO PurchaseEntry(Entry_Number, Price, Visitor_ID, Purchase_Date, Purchase_Time)
-VALUES (1, 10, 1,  to_date('2020-02-04', 'yyyy-mm-dd'), 'Morning');
+VALUES (1, 10, 1,  STR_TO_DATE('2020-02-04', '%Y-%m-%d'), 'Morning');
 INSERT INTO PurchaseEntry(Entry_Number, Price, Visitor_ID, Purchase_Date, Purchase_Time)
-VALUES (2, 10, 2, to_date('2020-02-04', 'yyyy-mm-dd'),  'Morning');
+VALUES (2, 10, 2, STR_TO_DATE('2020-02-04', '%Y-%m-%d'),  'Morning');
 INSERT INTO PurchaseEntry(Entry_Number, Price, Visitor_ID, Purchase_Date, Purchase_Time)
-VALUES (3, 10, 3, to_date('2020-02-04', 'yyyy-mm-dd'), 'Afternoon');
+VALUES (3, 10, 3, STR_TO_DATE('2020-02-04', '%Y-%m-%d'), 'Afternoon');
 INSERT INTO PurchaseEntry(Entry_Number, Price, Visitor_ID, Purchase_Date, Purchase_Time)
-VALUES (4, 5, 4, to_date('2020-02-04', 'yyyy-mm-dd'), 'Evening');
+VALUES (4, 5, 4, STR_TO_DATE('2020-02-04', '%Y-%m-%d'), 'Evening');
 INSERT INTO PurchaseEntry(Entry_Number, Price, Visitor_ID, Purchase_Date, Purchase_Time)
-VALUES (5, 5, 5, to_date('2020-02-04', 'yyyy-mm-dd'), 'Evening');
+VALUES (5, 5, 5, STR_TO_DATE('2020-02-04', '%Y-%m-%d'), 'Evening');
 
 
 INSERT INTO OutdoorWorker(Employee_Number, Outdoor_Gear)
@@ -401,27 +402,27 @@ INSERT INTO AnimalLivesIn(Animal_ID, Enclosure_ID, Species)
 VALUES ('Chip the Monkey', 'Monkey Enclosure', 'Monkey');
 
 INSERT INTO FoodItem(Food_Item_ID, Food_Quantity, Food_Expiry_Date)
-VALUES ('Crickets', 5, to_date('2021-03-14', 'yyyy-mm-dd'));
+VALUES ('Crickets', 5, STR_TO_DATE('2021-03-14', '%Y-%m-%d'));
 INSERT INTO FoodItem(Food_Item_ID, Food_Quantity, Food_Expiry_Date)
-VALUES ('Mealworms', 5, to_date('2021-03-14', 'yyyy-mm-dd'));
+VALUES ('Mealworms', 5, STR_TO_DATE('2021-03-14', '%Y-%m-%d'));
 INSERT INTO FoodItem(Food_Item_ID, Food_Quantity, Food_Expiry_Date)
-VALUES ('Mice', 5, to_date('2021-03-14', 'yyyy-mm-dd'));
+VALUES ('Mice', 5, STR_TO_DATE('2021-03-14', '%Y-%m-%d'));
 INSERT INTO FoodItem(Food_Item_ID, Food_Quantity, Food_Expiry_Date)
-VALUES ('Kibble', 5, to_date('2021-03-14', 'yyyy-mm-dd'));
+VALUES ('Kibble', 5, STR_TO_DATE('2021-03-14', '%Y-%m-%d'));
 INSERT INTO FoodItem(Food_Item_ID, Food_Quantity, Food_Expiry_Date)
-VALUES ('Bananas', 5, to_date('2021-03-14', 'yyyy-mm-dd'));
+VALUES ('Bananas', 5, STR_TO_DATE('2021-03-14', '%Y-%m-%d'));
 
 
 INSERT INTO Feeds(Employee_Number, Animal_ID, Date_of_feeding , Time, Food_Item_ID, Food_Quantity)
-VALUES (1, 'Larry the Lizard', to_date('2021-03-04', 'yyyy-mm-dd'), 1200, 'Crickets', 1);
+VALUES (1, 'Larry the Lizard', STR_TO_DATE('2021-03-04', '%Y-%m-%d'), 1200, 'Crickets', 1);
 INSERT INTO Feeds(Employee_Number, Animal_ID, Date_of_feeding , Time, Food_Item_ID, Food_Quantity)
-VALUES (2, 'Sam the Snake', to_date('2021-03-04', 'yyyy-mm-dd'), 1300, 'Mice', 1);
+VALUES (2, 'Sam the Snake', STR_TO_DATE('2021-03-04', '%Y-%m-%d'), 1300, 'Mice', 1);
 INSERT INTO Feeds(Employee_Number, Animal_ID, Date_of_feeding , Time, Food_Item_ID, Food_Quantity)
-VALUES (3, 'William the Wolf', to_date('2021-03-04', 'yyyy-mm-dd'), 1400, 'Kibble', 1);
+VALUES (3, 'William the Wolf', STR_TO_DATE('2021-03-04', '%Y-%m-%d'), 1400, 'Kibble', 1);
 INSERT INTO Feeds(Employee_Number, Animal_ID, Date_of_feeding , Time, Food_Item_ID, Food_Quantity)
-VALUES (4, 'Harry the Hedgehog', to_date('2021-03-04', 'yyyy-mm-dd'), 1500, 'Mealworms', 1);
+VALUES (4, 'Harry the Hedgehog', STR_TO_DATE('2021-03-04', '%Y-%m-%d'), 1500, 'Mealworms', 1);
 INSERT INTO Feeds(Employee_Number, Animal_ID, Date_of_feeding , Time, Food_Item_ID, Food_Quantity)
-VALUES (5, 'Chip the Monkey', to_date('2021-03-04', 'yyyy-mm-dd'), 1600, 'Bananas', 1);
+VALUES (5, 'Chip the Monkey', STR_TO_DATE('2021-03-04', '%Y-%m-%d'), 1600, 'Bananas', 1);
 
 
 INSERT INTO Eats(Animal_ID, Food_Item_ID)
