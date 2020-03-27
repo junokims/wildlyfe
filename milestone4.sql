@@ -1,49 +1,43 @@
-Drop table Typehost cascade constraints;
-Drop table Visitor cascade constraints;
-Drop table Events cascade constraints;
-Drop table Employee cascade constraints;
-Drop table Enclosure cascade constraints;
-Drop table Species cascade constraints;
-Drop table EventTypeBudget cascade constraints;
-Drop table VisitorHasContactInformation cascade constraints;
-Drop table AnimalLivesIn cascade constraints;
-Drop table PurchaseEntry cascade constraints;
-drop table FoodItem cascade constraints;
-drop table AnimalCaretaker;
-drop table OutdoorWorker;
-drop table Attends;
-drop table Plans;
-drop table OfficeWorker;
-drop table EventCoordinator;
-drop table HR;
-drop table TicketClerk;
-drop table Sells;
-drop table Volunteer;
-drop table Eats;
-drop table Feeds;
+DROP TABLE IF EXISTS Feeds;
+DROP TABLE IF EXISTS Eats;
+DROP TABLE IF EXISTS AnimalLivesIn;
+DROP TABLE IF EXISTS Enclosure;
+DROP TABLE IF EXISTS Attends;
+DROP TABLE IF EXISTS Plans;
+DROP TABLE IF EXISTS AnimalCaretaker;
+DROP TABLE IF EXISTS OutdoorWorker;
+DROP TABLE IF EXISTS OfficeWorker;
+DROP TABLE IF EXISTS EventCoordinator;
+DROP TABLE IF EXISTS HR;
+DROP TABLE IF EXISTS TicketClerk;
+DROP TABLE IF EXISTS Sells;
+DROP TABLE IF EXISTS Volunteer;
+DROP TABLE IF EXISTS Events;
+DROP TABLE IF EXISTS Employee;
+DROP TABLE IF EXISTS TypeHost;
+DROP TABLE IF EXISTS Enclosure;
+DROP TABLE IF EXISTS Species;
+DROP TABLE IF EXISTS EventTypeBudget;
+DROP TABLE IF EXISTS VisitorHasContactInformation;
+DROP TABLE IF EXISTS PurchaseEntry;
+DROP TABLE IF EXISTS FoodItem;
+DROP TABLE IF EXISTS Visitor;
 
 CREATE TABLE Enclosure(
     Enclosure_ID CHAR(20),
     Maintenance_Date DATE NOT NULL,
     PRIMARY KEY (Enclosure_ID));
 
-grant select on Enclosure to public;
-
 CREATE TABLE Visitor(
     Visitor_ID INTEGER,
     Demographic char(20),
     PRIMARY KEY (Visitor_ID));
-
-grant select on Visitor to public;
-
 
 CREATE TABLE TypeHost(
     Type char(20),
     Host char(40),
     PRIMARY KEY (Type)
   );
-
-grant select on TypeHost to public;
 
 CREATE TABLE Employee(
    Employee_Number INTEGER,
@@ -54,34 +48,25 @@ CREATE TABLE Employee(
    Department_Number INTEGER,
    PRIMARY KEY (Employee_Number));
 
-grant select on Employee to public;
-
-
  CREATE TABLE EventTypeBudget(
     Event_Type char(20),
     Events_Budget INTEGER,
     PRIMARY KEY (Event_Type));
-
-grant select on EventTypeBudget to public;
 
  CREATE TABLE Species(
     Species char(20),
     Diet char(20) NOT NULL,
     PRIMARY KEY (Species));
 
-grant select on Species to public;
-
-  CREATE TABLE VisitorHasContactInformation(
+ CREATE TABLE VisitorHasContactInformation(
       Visitor_ID  INTEGER,
       Name char(30),
       DOB DATE,
       Address char(40),
       Email char(40),
-      Phone_Number INTEGER,
+      Phone_Number char(12),
       PRIMARY KEY (Visitor_ID),
-      FOREIGN KEY (Visitor_ID) references Visitor ON DELETE SET NULL);
-
-grant select on VisitorHasContactInformation to public;
+      FOREIGN KEY (Visitor_ID) references Visitor(Visitor_ID) ON DELETE CASCADE);
 
   CREATE TABLE Events(
       Event_ID INTEGER,
@@ -92,28 +77,20 @@ grant select on VisitorHasContactInformation to public;
       Number_of_Invitees INTEGER,
       Type char(20),
       PRIMARY KEY (Event_ID),
-      FOREIGN KEY (Type) references TypeHost ON DELETE SET NULL);
-
-grant select on Events to public;
+      FOREIGN KEY (Type) references TypeHost(Type) ON DELETE CASCADE);
 
 CREATE TABLE Attends(
     Visitor_ID INTEGER,
     Event_ID INTEGER,
     PRIMARY KEY (Visitor_ID, Event_ID),
-    FOREIGN KEY (Visitor_ID) references Visitor ON DELETE SET NULL,
-    FOREIGN KEY (Event_ID) references Events ON DELETE SET NULL);
-
-grant select on Attends to public;
-
+    FOREIGN KEY (Visitor_ID) references Visitor(Visitor_ID) ON DELETE CASCADE,
+    FOREIGN KEY (Event_ID) references Events(Event_ID) ON DELETE CASCADE);
 
 CREATE TABLE FoodItem(
   Food_Item_ID char(20),
   Food_Quantity INTEGER,
   Food_Expiry_Date DATE,
   PRIMARY KEY (Food_Item_ID));
-
-grant select on FoodItem to public;
-
 
   CREATE TABLE PurchaseEntry(
     Entry_Number INTEGER,
@@ -122,101 +99,74 @@ grant select on FoodItem to public;
     Purchase_Time char(20),
     Visitor_ID INTEGER NOT NULL,
     PRIMARY KEY (Entry_Number),
-    FOREIGN KEY (Visitor_ID) references Visitor ON DELETE SET NULL);
-
-grant select on PurchaseEntry to public;
+    FOREIGN KEY (Visitor_ID) references Visitor(Visitor_ID) ON DELETE CASCADE);
 
 CREATE TABLE OutdoorWorker(
     Employee_Number INTEGER,
     Outdoor_Gear char(20),
     PRIMARY KEY (Employee_Number),
-    FOREIGN KEY (Employee_Number) references Employee ON DELETE SET NULL);
-
-grant select on OutdoorWorker to public;
-
+    FOREIGN KEY (Employee_Number) references Employee(Employee_Number) ON DELETE CASCADE);
 
 CREATE TABLE OfficeWorker(
     Employee_Number INTEGER,
     Desk_Number INTEGER,
     PRIMARY KEY (Employee_Number),
-    FOREIGN KEY (Employee_Number) references Employee ON DELETE SET NULL);
-
-grant select on OfficeWorker to public;
-
+    FOREIGN KEY (Employee_Number) references Employee(Employee_Number) ON DELETE CASCADE);
 
 CREATE TABLE EventCoordinator(
     Employee_Number INTEGER,
     Event_Type char(20),
     PRIMARY KEY (Employee_Number),
-    FOREIGN KEY (Employee_Number) references Employee ON DELETE SET NULL,
-    FOREIGN KEY (Event_Type) references EventTypeBudget ON DELETE SET NULL);
-
-grant select on EventCoordinator to public;
+    FOREIGN KEY (Employee_Number) references Employee(Employee_Number) ON DELETE CASCADE,
+    FOREIGN KEY (Event_Type) references EventTypeBudget(Event_Type) ON DELETE CASCADE);
 
 CREATE TABLE Plans(
     Employee_Number  INTEGER,
     Event_ID INTEGER,
     PRIMARY KEY (Employee_Number, Event_ID),
-    FOREIGN KEY (Employee_Number) references Employee ON DELETE SET NULL,
-    FOREIGN KEY (Event_ID) references Events ON DELETE SET NULL);
-
-grant select on Plans to public;
+    FOREIGN KEY (Employee_Number) references Employee(Employee_Number) ON DELETE CASCADE,
+    FOREIGN KEY (Event_ID) references Events(Event_ID) ON DELETE CASCADE);
 
 CREATE TABLE HR(
     Employee_Number INTEGER,
     Payroll_Login char(20),
     PRIMARY KEY (Employee_Number),
-    FOREIGN KEY (Employee_Number) references Employee ON DELETE SET NULL);
-
-grant select on HR to public;
-
+    FOREIGN KEY (Employee_Number) references Employee(Employee_Number) ON DELETE CASCADE);
 
 CREATE TABLE TicketClerk(
     Employee_Number INTEGER,
     Clerk_ID INTEGER,
     PRIMARY KEY (Employee_Number),
-    FOREIGN KEY (Employee_Number) references Employee ON DELETE SET NULL);
-
-grant select on TicketClerk to public;
+    FOREIGN KEY (Employee_Number) references Employee(Employee_Number) ON DELETE CASCADE);
 
 CREATE TABLE Sells(
     Employee_Number INTEGER,
     Entry_Number INTEGER,
     Cash_Register_ID INTEGER NOT NULL,
     PRIMARY KEY (Employee_Number, Entry_Number),
-    FOREIGN KEY (Employee_Number) references Employee ON DELETE SET NULL,
-    FOREIGN KEY (Entry_Number) references PurchaseEntry ON DELETE SET NULL);
-
-grant select on Sells to public;
+    FOREIGN KEY (Employee_Number) references Employee(Employee_Number) ON DELETE CASCADE,
+    FOREIGN KEY (Entry_Number) references PurchaseEntry(Entry_Number) ON DELETE CASCADE);
 
 CREATE TABLE AnimalCaretaker(
     Employee_Number INTEGER,
     Caretaker_ID INTEGER,
     Assigned_Species char(20),
     PRIMARY KEY (Employee_Number),
-    FOREIGN KEY (Employee_Number) references Employee ON DELETE SET NULL);
-
-grant select on AnimalCaretaker to public;
+    FOREIGN KEY (Employee_Number) references Employee(Employee_Number) ON DELETE CASCADE);
 
 CREATE TABLE Volunteer(
     Employee_Number INTEGER,
     Access_Level char(20),
     PRIMARY KEY (Employee_Number),
-    FOREIGN KEY (Employee_Number) references Employee ON DELETE SET NULL);
-
-grant select on Volunteer to public;
-
+    FOREIGN KEY (Employee_Number) references Employee(Employee_Number) ON DELETE CASCADE);
 
 CREATE TABLE AnimalLivesIn(
     Animal_ID char(20),
     Enclosure_ID char(20) NOT NULL,
     Species char(20),
     PRIMARY KEY (Animal_ID),
-    FOREIGN KEY (Enclosure_ID) references Enclosure ON DELETE SET NULL,
-    FOREIGN KEY (Species) references Species ON DELETE SET NULL);
-
-grant select on AnimalLivesIn to public;
-
+    FOREIGN KEY (Enclosure_ID) references Enclosure(Enclosure_ID) ON DELETE CASCADE,
+    FOREIGN KEY (Species) references Species(Species) ON DELETE CASCADE);
 
   CREATE TABLE Feeds(
       Employee_Number INTEGER,
@@ -226,32 +176,27 @@ grant select on AnimalLivesIn to public;
       Food_Item_ID char(20),
       Food_Quantity INTEGER,
       PRIMARY KEY (Employee_Number, Animal_ID),
-      FOREIGN KEY (Employee_Number) references Employee ON DELETE SET NULL,
-      FOREIGN KEY (Animal_ID)       references AnimalLivesIn ON DELETE CASCADE,
-      FOREIGN KEY (Food_Item_ID)    references FoodItem ON DELETE SET NULL);
-
-grant select on Feeds to public;
+      FOREIGN KEY (Employee_Number) references Employee(Employee_Number) ON DELETE CASCADE,
+      FOREIGN KEY (Animal_ID)       references AnimalLivesIn(Animal_ID) ON DELETE CASCADE,
+      FOREIGN KEY (Food_Item_ID)    references FoodItem(Food_Item_ID) ON DELETE CASCADE);
 
 CREATE TABLE Eats(
     Animal_ID char(20),
     Food_Item_ID char(20),
     PRIMARY KEY (Animal_ID, Food_Item_ID),
-    FOREIGN KEY (Animal_ID) references AnimalLivesIn ON DELETE SET NULL,
-    FOREIGN KEY (Food_Item_ID) references FoodItem ON DELETE SET NULL);
-
-grant select on Eats to public;
-
+    FOREIGN KEY (Animal_ID) references AnimalLivesIn(Animal_ID) ON DELETE CASCADE,
+    FOREIGN KEY (Food_Item_ID) references FoodItem(Food_Item_ID) ON DELETE CASCADE);
 
   INSERT INTO Enclosure(Enclosure_ID, Maintenance_Date)
-  VALUES ('Lizard Enclosure', to_date('2020-12-17', 'yyyy-mm-dd'));
+  VALUES ('Lizard Enclosure', STR_TO_DATE('2020-12-1', '%Y-%m-%d'));
   INSERT INTO Enclosure(Enclosure_ID, Maintenance_Date)
-  VALUES ('Hedgehog Enclosure', to_date('2020-02-17', 'yyyy-mm-dd'));
+  VALUES ('Hedgehog Enclosure', STR_TO_DATE('2020-02-17', '%Y-%m-%d'));
   INSERT INTO Enclosure(Enclosure_ID, Maintenance_Date)
-  VALUES ('Snake Enclosure', to_date('2020-11-17', 'yyyy-mm-dd'));
+  VALUES ('Snake Enclosure', STR_TO_DATE('2020-11-17', '%Y-%m-%d'));
   INSERT INTO Enclosure(Enclosure_ID, Maintenance_Date)
-  VALUES ('Wolf Enclosure', to_date('2020-12-09', 'yyyy-mm-dd'));
+  VALUES ('Wolf Enclosure', STR_TO_DATE('2020-12-09', '%Y-%m-%d'));
   INSERT INTO Enclosure(Enclosure_ID, Maintenance_Date)
-  VALUES ('Monkey Enclosure', to_date('2020-04-17', 'yyyy-mm-dd'));
+  VALUES ('Monkey Enclosure', STR_TO_DATE('2020-04-17', '%Y-%m-%d'));
 
   INSERT INTO Visitor(Visitor_ID, Demographic)
   VALUES (1, 'Senior');
@@ -265,15 +210,15 @@ grant select on Eats to public;
   VALUES (5, 'Adult');
 
   INSERT INTO VisitorHasContactInformation(Visitor_ID, Name, Address, Email, Phone_Number, DOB)
-  VALUES (1, 'Juno Kim', '123 Some Street', 'juno@ubc.ca', 7161234567, to_date('1962-04-01', 'yyyy-mm-dd'));
+  VALUES (1, 'Juno Kim', '123 Some Street', 'juno@ubc.ca', '716-123-4567', STR_TO_DATE('1962-04-01', '%Y-%m-%d'));
   INSERT INTO VisitorHasContactInformation(Visitor_ID, Name, Address, Email, Phone_Number, DOB)
-  VALUES (2, 'Junsun Kim', '123 Some Street', 'junsun@ubc.ca', 7161234567, to_date('2012-04-01', 'yyyy-mm-dd'));
+  VALUES (2, 'Junsun Kim', '123 Some Street', 'junsun@ubc.ca', '716-123-4567', STR_TO_DATE('2012-04-01', '%Y-%m-%d'));
   INSERT INTO VisitorHasContactInformation(Visitor_ID, Name, Address, Email, Phone_Number, DOB)
-  VALUES (3, 'Logan Lapointe', '289 Some Street', 'logan@shaw.ca', 2134567896, to_date('1993-04-01', 'yyyy-mm-dd'));
+  VALUES (3, 'Logan Lapointe', '289 Some Street', 'logan@shaw.ca', '213-456-7896', STR_TO_DATE('1993-04-01', '%Y-%m-%d'));
   INSERT INTO VisitorHasContactInformation(Visitor_ID, Name, Address, Email, Phone_Number, DOB)
-  VALUES (4, 'Riley Bierer', '456 Some Street', 'riles@gmail.ca', 7161234527, to_date('1983-04-01', 'yyyy-mm-dd'));
+  VALUES (4, 'Riley Bierer', '456 Some Street', 'riles@gmail.ca', '716-123-4527', STR_TO_DATE('1983-04-01', '%Y-%m-%d'));
   INSERT INTO VisitorHasContactInformation(Visitor_ID, Name, Address, Email, Phone_Number, DOB)
-  VALUES (5, 'Brian Stephens', '1577 Some Street', 'brianstep@live.ca', 7161276527, to_date('1982-04-01', 'yyyy-mm-dd'));
+  VALUES (5, 'Brian Stephens', '1577 Some Street', 'brianstep@live.ca', '716-127-6527', STR_TO_DATE('1982-04-01', '%Y-%m-%d'));
 
   INSERT INTO TypeHost(Type, Host)
   VALUES ('Party', 'Leslie Gore');
@@ -287,15 +232,15 @@ grant select on Eats to public;
   VALUES ('Community Outreach', 'Brita Filter');
 
   INSERT INTO Events(Event_ID, Name_of_Event, Time, Event_date, Location, Number_of_Invitees, Type)
-  VALUES (1, 'Steves Birthday Party', '15:00', to_date('2020-04-01', 'yyyy-mm-dd'), 'West Wing', '20', 'Party');
+  VALUES (1, 'Steves Birthday Party', '15:00', STR_TO_DATE('2020-04-01', '%Y-%m-%d'), 'West Wing', '20', 'Party');
   INSERT INTO Events(Event_ID, Name_of_Event, Time, Event_date, Location, Number_of_Invitees, Type)
-  VALUES (2, 'Als Birthday Party', '15:00', to_date('2020-04-02', 'yyyy-mm-dd'), 'West Wing', '20', 'Party');
+  VALUES (2, 'Als Birthday Party', '15:00', STR_TO_DATE('2020-04-02', '%Y-%m-%d'), 'West Wing', '20', 'Party');
   INSERT INTO Events(Event_ID, Name_of_Event, Time, Event_date, Location, Number_of_Invitees, Type)
-  VALUES (3, 'Rogers Birthday Party', '15:00', to_date('2020-04-03', 'yyyy-mm-dd'), 'West Wing', '20', 'Party');
+  VALUES (3, 'Rogers Birthday Party', '15:00', STR_TO_DATE('2020-04-03', '%Y-%m-%d'), 'West Wing', '20', 'Party');
   INSERT INTO Events(Event_ID, Name_of_Event, Time, Event_date, Location, Number_of_Invitees, Type)
-  VALUES (4, 'Bens Birthday Party', '15:00', to_date('2020-04-04', 'yyyy-mm-dd'), 'West Wing', '20', 'Party');
+  VALUES (4, 'Bens Birthday Party', '15:00', STR_TO_DATE('2020-04-04', '%Y-%m-%d'), 'West Wing', '20', 'Party');
   INSERT INTO Events(Event_ID, Name_of_Event, Time, Event_date, Location, Number_of_Invitees, Type)
-  VALUES (5, 'Cliffords Birthday Party', '15:00', to_date('2020-04-05', 'yyyy-mm-dd'), 'West Wing', '20', 'Party');
+  VALUES (5, 'Cliffords Birthday Party', '15:00', STR_TO_DATE('2020-04-05', '%Y-%m-%d'), 'West Wing', '20', 'Party');
 
 
 INSERT INTO Attends(Visitor_ID, Event_ID)
@@ -310,28 +255,28 @@ INSERT INTO Attends(Visitor_ID, Event_ID)
 VALUES (5,1);
 
 INSERT INTO Employee(Employee_Number, Name, DOB, SIN, Director_Number, Department_Number )
-VALUES (1, 'Laura Ruiz', to_date('1997-01-01', 'yyyy-mm-dd'), 123456789, 1, 1);
+VALUES (1, 'Laura Ruiz', STR_TO_DATE('1997-01-01', '%Y-%m-%d'), 123456789, 1, 1);
 INSERT INTO Employee(Employee_Number, Name, DOB, SIN, Director_Number, Department_Number )
-VALUES (2, 'Lauren Ruiz', to_date('1997-01-01', 'yyyy-mm-dd'), 123456790, 1, 1);
+VALUES (2, 'Lauren Ruiz', STR_TO_DATE('1997-01-01', '%Y-%m-%d'), 123456790, 1, 1);
 INSERT INTO Employee(Employee_Number, Name, DOB, SIN, Director_Number, Department_Number )
-VALUES (3, 'Lara Ruiz', to_date('1997-01-01', 'yyyy-mm-dd'), 123456791, 1, 1);
+VALUES (3, 'Lara Ruiz', STR_TO_DATE('1997-01-01', '%Y-%m-%d'), 123456791, 1, 1);
 INSERT INTO Employee(Employee_Number, Name, DOB, SIN, Director_Number, Department_Number )
-VALUES (4, 'Laurin Ruiz', to_date('1997-01-01', 'yyyy-mm-dd'), 123456792, 1, 1);
+VALUES (4, 'Laurin Ruiz', STR_TO_DATE('1997-01-01', '%Y-%m-%d'), 123456792, 1, 1);
 INSERT INTO Employee(Employee_Number, Name, DOB, SIN, Director_Number, Department_Number )
-VALUES (5, 'Lore Ruiz', to_date('1997-01-01', 'yyyy-mm-dd'), 123456793, 40, 1);
+VALUES (5, 'Lore Ruiz', STR_TO_DATE('1997-01-01', '%Y-%m-%d'), 123456793, 40, 1);
 
 
 
 INSERT INTO PurchaseEntry(Entry_Number, Price, Visitor_ID, Purchase_Date, Purchase_Time)
-VALUES (1, 10, 1,  to_date('2020-02-04', 'yyyy-mm-dd'), 'Morning');
+VALUES (1, 10, 1,  STR_TO_DATE('2020-02-04', '%Y-%m-%d'), 'Morning');
 INSERT INTO PurchaseEntry(Entry_Number, Price, Visitor_ID, Purchase_Date, Purchase_Time)
-VALUES (2, 10, 2, to_date('2020-02-04', 'yyyy-mm-dd'),  'Morning');
+VALUES (2, 10, 2, STR_TO_DATE('2020-02-04', '%Y-%m-%d'),  'Morning');
 INSERT INTO PurchaseEntry(Entry_Number, Price, Visitor_ID, Purchase_Date, Purchase_Time)
-VALUES (3, 10, 3, to_date('2020-02-04', 'yyyy-mm-dd'), 'Afternoon');
+VALUES (3, 10, 3, STR_TO_DATE('2020-02-04', '%Y-%m-%d'), 'Afternoon');
 INSERT INTO PurchaseEntry(Entry_Number, Price, Visitor_ID, Purchase_Date, Purchase_Time)
-VALUES (4, 5, 4, to_date('2020-02-04', 'yyyy-mm-dd'), 'Evening');
+VALUES (4, 5, 4, STR_TO_DATE('2020-02-04', '%Y-%m-%d'), 'Evening');
 INSERT INTO PurchaseEntry(Entry_Number, Price, Visitor_ID, Purchase_Date, Purchase_Time)
-VALUES (5, 5, 5, to_date('2020-02-04', 'yyyy-mm-dd'), 'Evening');
+VALUES (5, 5, 5, STR_TO_DATE('2020-02-04', '%Y-%m-%d'), 'Evening');
 
 
 INSERT INTO OutdoorWorker(Employee_Number, Outdoor_Gear)
@@ -457,27 +402,27 @@ INSERT INTO AnimalLivesIn(Animal_ID, Enclosure_ID, Species)
 VALUES ('Chip the Monkey', 'Monkey Enclosure', 'Monkey');
 
 INSERT INTO FoodItem(Food_Item_ID, Food_Quantity, Food_Expiry_Date)
-VALUES ('Crickets', 5, to_date('2021-03-14', 'yyyy-mm-dd'));
+VALUES ('Crickets', 5, STR_TO_DATE('2021-03-14', '%Y-%m-%d'));
 INSERT INTO FoodItem(Food_Item_ID, Food_Quantity, Food_Expiry_Date)
-VALUES ('Mealworms', 5, to_date('2021-03-14', 'yyyy-mm-dd'));
+VALUES ('Mealworms', 5, STR_TO_DATE('2021-03-14', '%Y-%m-%d'));
 INSERT INTO FoodItem(Food_Item_ID, Food_Quantity, Food_Expiry_Date)
-VALUES ('Mice', 5, to_date('2021-03-14', 'yyyy-mm-dd'));
+VALUES ('Mice', 5, STR_TO_DATE('2021-03-14', '%Y-%m-%d'));
 INSERT INTO FoodItem(Food_Item_ID, Food_Quantity, Food_Expiry_Date)
-VALUES ('Kibble', 5, to_date('2021-03-14', 'yyyy-mm-dd'));
+VALUES ('Kibble', 5, STR_TO_DATE('2021-03-14', '%Y-%m-%d'));
 INSERT INTO FoodItem(Food_Item_ID, Food_Quantity, Food_Expiry_Date)
-VALUES ('Bananas', 5, to_date('2021-03-14', 'yyyy-mm-dd'));
+VALUES ('Bananas', 5, STR_TO_DATE('2021-03-14', '%Y-%m-%d'));
 
 
 INSERT INTO Feeds(Employee_Number, Animal_ID, Date_of_feeding , Time, Food_Item_ID, Food_Quantity)
-VALUES (1, 'Larry the Lizard', to_date('2021-03-04', 'yyyy-mm-dd'), 1200, 'Crickets', 1);
+VALUES (1, 'Larry the Lizard', STR_TO_DATE('2021-03-04', '%Y-%m-%d'), 1200, 'Crickets', 1);
 INSERT INTO Feeds(Employee_Number, Animal_ID, Date_of_feeding , Time, Food_Item_ID, Food_Quantity)
-VALUES (2, 'Sam the Snake', to_date('2021-03-04', 'yyyy-mm-dd'), 1300, 'Mice', 1);
+VALUES (2, 'Sam the Snake', STR_TO_DATE('2021-03-04', '%Y-%m-%d'), 1300, 'Mice', 1);
 INSERT INTO Feeds(Employee_Number, Animal_ID, Date_of_feeding , Time, Food_Item_ID, Food_Quantity)
-VALUES (3, 'William the Wolf', to_date('2021-03-04', 'yyyy-mm-dd'), 1400, 'Kibble', 1);
+VALUES (3, 'William the Wolf', STR_TO_DATE('2021-03-04', '%Y-%m-%d'), 1400, 'Kibble', 1);
 INSERT INTO Feeds(Employee_Number, Animal_ID, Date_of_feeding , Time, Food_Item_ID, Food_Quantity)
-VALUES (4, 'Harry the Hedgehog', to_date('2021-03-04', 'yyyy-mm-dd'), 1500, 'Mealworms', 1);
+VALUES (4, 'Harry the Hedgehog', STR_TO_DATE('2021-03-04', '%Y-%m-%d'), 1500, 'Mealworms', 1);
 INSERT INTO Feeds(Employee_Number, Animal_ID, Date_of_feeding , Time, Food_Item_ID, Food_Quantity)
-VALUES (5, 'Chip the Monkey', to_date('2021-03-04', 'yyyy-mm-dd'), 1600, 'Bananas', 1);
+VALUES (5, 'Chip the Monkey', STR_TO_DATE('2021-03-04', '%Y-%m-%d'), 1600, 'Bananas', 1);
 
 
 INSERT INTO Eats(Animal_ID, Food_Item_ID)
