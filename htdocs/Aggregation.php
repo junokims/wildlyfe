@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>See Events with the Most Attendees</title>
+    <title>See event count of distinct events</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <style>
@@ -172,7 +172,7 @@
 <?php endif ?>
     <div class="testbox">
       <form action="connect-aggregation.php" method="post">
-        <h1>Assess Highest Attandance of Ongoing Events</h1>
+        <h1>Count Distinct Events</h1>
         <hr/>
         <div class="item desired-outcome">
           <button type="submit" name="save">Send</button>
