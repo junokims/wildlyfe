@@ -173,22 +173,17 @@
     
     <div class="testbox">
     <tr>
-    <h1>Find animals with a diet like yours!</h1>
+    <h1>Find the most popular visitor(s)!</h1>
     </tr>
   </div>
 
-  <div>
-    <tr>
-      <form method = "post" action="projection-connect.php">
-          <label for="diet">Choose a diet:</label>
-              <select id="diet" name="selected_diet">
-                  <option value="Carnivorous">Carnivorous</option>
-                  <option value="Omnivorous">Omnivore</option>
-                  <option value="Vegetarian">Vegetarian</option>
-              </select>
-              <button type="submit" name="submit_form">Submit</button>      </form>
-    </tr>
-  </div>
+  <div class="testbox">
+      <form action="division-connect.php" method="post">
+        <div class="item desired-outcome">
+          <button type="submit" name="save">Send</button>
+        </div>
+      </form>
+    </div>
   
   </body>
 
