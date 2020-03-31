@@ -172,7 +172,7 @@
 <?php endif ?>
     <div class="testbox">
       <form action="connect-selection.php" method="post">
-        <h1>Which employee would you like to select?</h1>
+        <h1>See Entries Sold by Customer </h1>
         <hr/>
         <div class="item">
           <p>Employee Number</p>
