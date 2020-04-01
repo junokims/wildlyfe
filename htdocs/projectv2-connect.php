@@ -8,7 +8,7 @@ if (isset($_POST['submit_form'])) {
         echo "Name is empty";
     } else {
         echo $someFieldToProject;
-        $dbconnect = mysqli_connect('localhost', 'root', 'root', 'wyldlyfe')or die("initial host/db connection problem");
+        $dbconnect = mysqli_connect('localhost', 'root', 'root', 'wildlyfe')or die("initial host/db connection problem");
 
 
         $sql = "SELECT ".$someFieldToProject." FROM Employee";
