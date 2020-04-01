@@ -1,6 +1,6 @@
 <?php
 
-include 'selection.php';$conn = OpenCon();
+include 'employeetable.php';$conn = OpenCon();
 if (isset($_POST['save'])) {
 (int)$Enum = (int)$_POST['Employee_Number'];
 
