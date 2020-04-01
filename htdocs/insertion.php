@@ -1,4 +1,5 @@
-<?php  include('connect.php'); ?>
+
+<?php  include('connect-insertion.php'); ?>
 
 <!DOCTYPE html>
 <html>
@@ -181,11 +182,25 @@
         </div>
         <div class="item">
           <p>Enclosure ID</p>
-          <input type="text" name="enclosure_id"/>
+             <select name="EnclosureID" >
+              <option value="">Enclosure ID</option>
+              <option value="Hedgehog Enclosure">Hedgehog Enclosure</option>
+              <option value="Lizard Enclosure">Lizard Enclosure</option>
+              <option value="Monkey Enclosure">Monkey Enclosure</option>
+              <option value="Snake Enclosure">Snake Enclosure</option>
+              <option value="Wolf Enclosure">Wolf Enclosure</option>
+            </select>
         </div>
         <div class="item">
           <p>Species</p>
-          <input type="text" name="Species"/>
+          <select name= "Species">
+              <option value="">Species</option>
+              <option value="Hedgehog">Hedgehog</option>
+              <option value="Lizard">Lizard</option>
+              <option value="Monkey">Monkey</option>
+              <option value="Snake">Snake</option>
+              <option value="Wolf">Wolf</option>
+            </select>
         </div>
         <div class="item desired-outcome">
           <button type="submit" name="save">Send</button>
