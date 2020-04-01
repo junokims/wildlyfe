@@ -16,4 +16,3 @@ header('location: insertion.php');
 }
 
 ?>
-© 2020 GitHub, Inc.

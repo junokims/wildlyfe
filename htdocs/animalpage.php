@@ -241,7 +241,7 @@ $conn->close();
 	</form>
 
  	<form action="deletion.php">        
-	<button type="submit" name="delete one of our animal" >Delete an animal</button>
+		<button type="submit" name="delete one of our animal">Delete an animal</button>
 	</form>
 </div>
 <br> </br>
@@ -250,22 +250,22 @@ $conn->close();
 <h2> What do we feed our animals? </h2> 
 <p> That's a great question, enter the animal ID in the textbox below and find out! </p>
 <input  class="street-item" type="text" name="animal_id" placeholder="Animal ID" />
-<button type="submit" name="save">Check</button>
+<button type="submit" name="check">Check</button>
 <?php
-if (isset($_POST['save'])) {
+if (isset($_POST['check'])) {
 $animalid = $_POST['animal_id'];
 
 
 $dbconnect = mysqli_connect('localhost', 'root', 'root', 'wyldlyfe')or die("initial host/db connection problem");
 
-$sql = "SELECT Food_Item_ID FROM Eats e, AnimalLivesIn ali WHERE ali.Animal_ID=e.Animal_ID AND ali.Species='$animalid'";
+$sql1 = "SELECT Food_Item_ID FROM Eats e, AnimalLivesIn ali WHERE ali.Animal_ID=e.Animal_ID AND ali.Species='$animalid'";
 
-$result = mysqli_query($dbconnect,$sql);
+$result1 = mysqli_query($dbconnect,$sql1 );
         
 echo "<table>";
 echo "<tr><th>We feed our $animalid </th></tr>";
 
-while($row = mysqli_fetch_array($result)) {
+while($row = mysqli_fetch_array($result1)) {
     $name = $row['Food_Item_ID'];
     echo "<tr><td style='width: 200px;'>".$name."</td></tr>";
 } 
