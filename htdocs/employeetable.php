@@ -9,7 +9,7 @@ html {
 }
 
 body {
-background-image: url("wildlife3.jpg");
+background-image: url("wildlife8.png");
 border-collapse: collapse;
 width: 80%%;
 color: #666;
@@ -50,7 +50,20 @@ max-width: 56em;
     display: block;
   }
 }
-
+ input, select, textarea {
+      width: 100%;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      }
+      input {
+      width: calc(100% - 10px);
+      padding: 5px;
+      }
+      input:hover, textarea:hover, select:hover {
+      outline: none;
+      border: 1px solid #095484;
+      }
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
@@ -77,22 +90,25 @@ max-width: 56em;
   color: grey;
 }
 
-.button {
-  border: none;
-  outline: 0;
-  display: inline-block;
-  padding: 8px;
-  color: white;
-  background-color: #000;
-  text-align: center;
-  cursor: pointer;
-  width: 100%;
-}
-
-.button:hover {
-  background-color: #555;
-}
-
+.btn-block {
+      margin-top: 20px;
+      text-align: center;
+      }
+      button {
+      width: 150px;
+      padding: 10px;
+      border: none;
+      -webkit-border-radius: 5px; 
+      -moz-border-radius: 5px; 
+      border-radius: 5px; 
+      background-color: #095484;
+      font-size: 16px;
+      color: #fff;
+      cursor: pointer;
+      }
+      button:hover {
+      background-color: #0666a3;
+      }
 table {
 border-collapse: collapse;
 width: 80%%;
@@ -105,7 +121,7 @@ margin: 0 auto;
 max-width: 56em;
 }
 th {
-background-color: #588c7e;
+background-color: #0070b5;
 color: white;
 }
 </style>
@@ -167,7 +183,7 @@ $conn->close();
       <div class="container2">
         <h2>Lauren Ruiz</h2>
         <p class="title">Animal Caretaker</p>
-        <p>The only thing they love more than the center are the animals themselves.</p>
+        <p>The only thing they love more than Wildlyfe are the animals themselves.</p>
       </div>
     </div>
   </div>
