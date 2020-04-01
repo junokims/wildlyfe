@@ -1,0 +1,32 @@
+import requests
+import json
+
+resp = requests.get('https://statsapi.web.nhl.com/api/v1/standings')
+resp2 = resp.json()
+print(resp2.keys())
+
+print("Eastern Conference:")
+metropolitan = resp2['records'][0]
+metropolitan_records = metropolitan['teamRecords']
+print("\nMetropolitan Division:")
+for t in metropolitan_records:
+    print(t['team']['name'] + ",", t['points'])
+
+print("\nAtlantic Division:")
+atlantic = resp2['records'][1]
+atlantic_records = atlantic['teamRecords']
+for t in atlantic_records:
+    print(t['team']['name'] + ",", t['points'])
+
+print("Western Conference:")
+print("\nCentral Division:")
+central = resp2['records'][2]
+central_records = central['teamRecords']
+for t in central_records:
+    print(t['team']['name'] + ",", t['points'])
+
+print("\nPacific Division:")
+pacific = resp2['records'][3]
+pacific_records = pacific['teamRecords']
+for t in pacific_records:
+    print(t['team']['name'] + ",", t['points'])

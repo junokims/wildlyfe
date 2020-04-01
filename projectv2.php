@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Find out what an animal eats!</title>
+    <title>Find diet</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <style>
@@ -169,23 +169,27 @@
 			unset($_SESSION['message']);
 		?>
 	</div>
-<?php endif ?>
+    <?php endif ?>
+    
     <div class="testbox">
-      <form action="join-connect.php" method="post">
-        <h1>Table join</h1>
-        <p>Find out specifically what we feed our animals!</p>
-        <hr/>
-        <div class="item">
-          <p>Species</p>
-          <input type="text" name="animal_id" placeholder="Species" />
-        </div>
-        <div class="item desired-outcome">
-          <button type="submit" name="save">Send</button>
-        </div>
-      </form>
-    </div>
+    <tr>
+    <h1>Project something!</h1>
+    </tr>
+  </div>
+
+  <div>
+    <tr>
+      <form method = "post" action="projection-connect.php">
+          <label for="diet">Choose a diet:</label>
+              <select id="diet" name="selected_diet">
+                  <option value="Carnivorous">Carnivorous</option>
+                  <option value="Omnivorous">Omnivore</option>
+                  <option value="Vegetarian">Vegetarian</option>
+              </select>
+              <button type="submit" name="submit_form">Submit</button>      </form>
+    </tr>
+  </div>
+  
   </body>
+
 </html>
-
-
-<!-- DROPDOWN  -->
