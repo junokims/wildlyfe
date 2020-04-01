@@ -240,7 +240,7 @@ $conn->close();
           <button type="submit" name="add an animal">Add an animal</button>
 	</form>
 
- 	<form action="deletion.php"> 
+ 	<form action="deletion.php">        
 	<button type="submit" name="delete one of our animal" >Delete an animal</button>
 	</form>
 </div>
@@ -255,18 +255,24 @@ $conn->close();
 if (isset($_POST['check'])) {
 $animalid = $_POST['animal_id'];
 
+
 $dbconnect = mysqli_connect('localhost', 'root', 'root', 'Wildlyfe')or die("initial host/db connection problem");
 
 $sql1 = "SELECT Food_Item_ID FROM Eats e, AnimalLivesIn ali WHERE ali.Animal_ID=e.Animal_ID AND ali.Species='$animalid'";
-$result1 = mysqli_query($dbconnect,$sql1);
 
-while($row = mysqli_fetch_array($result)) {
+$result1 = mysqli_query($dbconnect,$sql1 );
+        
+echo "<table>";
+echo "<tr><th>We feed our $animalid </th></tr>";
+
+while($row = mysqli_fetch_array($result1)) {
     $name = $row['Food_Item_ID'];
     echo "<tr><td style='width: 200px;'>".$name."</td></tr>";
 } 
 
 echo "</table>";
 mysqli_close($dbconnect);
+
 
 }
 
