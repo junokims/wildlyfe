@@ -1,4 +1,4 @@
-<?php  include('connect-insertion.php'); ?>
+<?php  include('connect-delete.php'); ?>
 
 <!DOCTYPE html>
 <html>
@@ -164,45 +164,23 @@
   <body>
     <?php if (isset($_SESSION['message'])): ?>
 	<div class="msg">
-		<?php 
-			echo $_SESSION['message']; 
+		<?php
+			echo $_SESSION['message'];
 			unset($_SESSION['message']);
 		?>
 	</div>
 <?php endif ?>
     <div class="testbox">
-      <form action="connect-insertion.php" method="post">
-        <h1>Add a new animal!</h1>
-        <p>add his/her details below</p>
+      <form action="connect-delete.php" method="post">
+        <h1>Delete an animal!</h1>
+        <p>Enter the ID of the animal you would like to delete below.</p>
         <hr/>
         <div class="item">
           <p>Animal ID</p>
           <input type="text" name="animal_id" placeholder="Full name" />
         </div>
-        <div class="item">
-          <p>Enclosure ID</p>
-             <select name="EnclosureID" >
-              <option value="">Enclosure ID</option>
-              <option value="Hedgehog Enclosure">Hedgehog Enclosure</option>
-              <option value="Lizard Enclosure">Lizard Enclosure</option>
-              <option value="Monkey Enclosure">Monkey Enclosure</option>
-              <option value="Snake Enclosure">Snake Enclosure</option>
-              <option value="Wolf Enclosure">Wolf Enclosure</option>
-            </select>
-        </div>
-        <div class="item">
-          <p>Species</p>
-          <select name= "Species">
-              <option value="">Species</option>
-              <option value="Hedgehog">Hedgehog</option>
-              <option value="Lizard">Lizard</option>
-              <option value="Monkey">Monkey</option>
-              <option value="Snake">Snake</option>
-              <option value="Wolf">Wolf</option>
-            </select>
-        </div>
         <div class="item desired-outcome">
-          <button type="submit" name="save">Send</button>
+          <button type="submit" name="save" href="/">Send</button>
         </div>
       </form>
     </div>

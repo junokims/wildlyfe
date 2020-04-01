@@ -1,6 +1,6 @@
 <?php
 
-include 'Aggregation.php';$conn = OpenCon();
+include 'aggregation.php';$conn = OpenCon();
 if (isset($_POST['save'])) {
 
 $sql = "SELECT Count(DISTINCT Event_ID) AS TotalEvents

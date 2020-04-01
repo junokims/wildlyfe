@@ -1,9 +1,7 @@
-<?php  include('connect-insertion.php'); ?>
-
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Add a new animal</title>
+    <title>Simple Complaint Form</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <style>
@@ -11,8 +9,8 @@
       min-height: 100%;
       }
       body, div, form, input, select, p {
-      padding: 100;
-      margin: 20000;
+      padding: 0;
+      margin: 0;
       outline: none;
       font-family: Roboto, Arial, sans-serif;
       font-size: 14px;
@@ -65,6 +63,7 @@
       display: flex;
       flex-direction: column;
       margin: 10px 0;
+      margin-right: 10px
       }
       input[type="date"]::-webkit-inner-spin-button {
       display: none;
@@ -163,47 +162,51 @@
   </head>
   <body>
     <?php if (isset($_SESSION['message'])): ?>
-	<div class="msg">
-		<?php 
-			echo $_SESSION['message']; 
-			unset($_SESSION['message']);
-		?>
-	</div>
-<?php endif ?>
+       <div class="msg">
+               <?php 
+                       echo $_SESSION['message']; 
+                       unset($_SESSION['message']);
+               ?>
+       </div>
+     <?php endif ?>
     <div class="testbox">
-      <form action="connect-insertion.php" method="post">
-        <h1>Add a new animal!</h1>
-        <p>add his/her details below</p>
+      <form action="connect-update.php" method="post">
+        <h1>View or Edit Visitor Details</h1>
+        <p>Find below our current registered visitors. If you would like to update any information
+          fill the form below our table by entering the ID you would like to update</p>
         <hr/>
-        <div class="item">
-          <p>Animal ID</p>
-          <input type="text" name="animal_id" placeholder="Full name" />
+        <br>
+        </br>
+        <div class="input-group">
+          <p><strong>Enter the ID of the visitor you want to update</strong></p>
+          <input type="number" name="visitor_id" placeholder="0" />
         </div>
-        <div class="item">
-          <p>Enclosure ID</p>
-             <select name="EnclosureID" >
-              <option value="">Enclosure ID</option>
-              <option value="Hedgehog Enclosure">Hedgehog Enclosure</option>
-              <option value="Lizard Enclosure">Lizard Enclosure</option>
-              <option value="Monkey Enclosure">Monkey Enclosure</option>
-              <option value="Snake Enclosure">Snake Enclosure</option>
-              <option value="Wolf Enclosure">Wolf Enclosure</option>
-            </select>
+        <br>
+        </br>
+        <div class="input-group">
+          <p>Name</p>
+          <input type="text" name="name" placeholder="Name"  />
+          <button type="save" name='update2'>Update</button>
         </div>
-        <div class="item">
-          <p>Species</p>
-          <select name= "Species">
-              <option value="">Species</option>
-              <option value="Hedgehog">Hedgehog</option>
-              <option value="Lizard">Lizard</option>
-              <option value="Monkey">Monkey</option>
-              <option value="Snake">Snake</option>
-              <option value="Wolf">Wolf</option>
-            </select>
+        <div class="input-group">
+          <p>Date of Birth</p>
+          <input type="text" name="birthday" placeholder="Dob"/>
+          <button type="save" name='update3'>Update</button>
         </div>
-        <div class="item desired-outcome">
-          <button type="submit" name="save">Send</button>
+        <div class="item-group">
+          <p>Address</p>
+          <input type="text" name="address" placeholder="Address"/>
+          <button type="save" name='update4'>Update</button>
         </div>
+        <div class="item-group">
+          <p>Email</p>
+          <input type="text" name="email" placeholder="Email"/>
+          <button type="save" name='update5'>Update</button>
+        </div>
+        <div class="item-group">
+          <p>Phone number</p>
+          <input type="text" name="phonenumber" placeholder="111-111-1111"/>
+          <button type="save" name='update6'>Update</button>
       </form>
     </div>
   </body>
