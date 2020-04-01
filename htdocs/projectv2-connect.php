@@ -11,7 +11,7 @@ if (isset($_POST['submit_form'])) {
         $dbconnect = mysqli_connect('localhost', 'root', 'root', 'wyldlyfe')or die("initial host/db connection problem");
 
 
-        $sql = "SELECT '.$someFieldToProject.' FROM Employee";
+        $sql = "SELECT ".$someFieldToProject." FROM Employee";
 
         $result = mysqli_query($dbconnect,$sql);
         
