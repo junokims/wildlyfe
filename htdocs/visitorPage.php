@@ -216,27 +216,28 @@ tr:nth-child(even) {background-color: #f2f2f2}
 
 </tr>
 <?php
-$conn = mysqli_connect("localhost", "root", "root", "wyldlyfe");
-// Check connection
-if ($conn->connect_error) {
-die("Connection failed: " . $conn->connect_error);
-}
-$sql = "SELECT * FROM VisitorHasContactInformation";
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
-// output data of each row
-while($row = $result->fetch_assoc()) {
-echo "<tr><td>" . $row["Visitor_ID"]. "</td><td>" . $row["Name"] . "</td><td>"
-. $row["DOB"]. "</td><td>" . $row["Address"]. "</td><td>" . $row["Email"]. "</td><td>" . $row["Phone_Number"]. "</td></tr>";
-}
-echo "</table>";
-} else { echo "0 results"; }
-$conn->close();
+    $conn = mysqli_connect("localhost", "root", "root", "wyldlyfe");
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    $sql = "SELECT * FROM VisitorHasContactInformation";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        // output data of each row
+        while($row = $result->fetch_assoc()) {
+            echo "<tr><td>" . $row["Visitor_ID"]. "</td><td>" . $row["Name"] . "</td><td>"
+            . $row["DOB"]. "</td><td>" . $row["Address"]. "</td><td>" . $row["Email"]. "</td><td>" . $row["Phone_Number"]. "</td></tr>";
+        }
+        echo "</table>";
+    } else { echo "0 results"; }
+    $conn->close();
 ?>
-<br>
-</br>
+
+<br> </br>
+
 </table>
-<div class="button-container">
+<div class="button-container" align="center">
 	<form action="update.php">
           <button type="submit" name="update">Update</button>
 	</form>
@@ -244,12 +245,16 @@ $conn->close();
 </div>
 
 <br> </br>
+<div class="button-container" align="center">
 <form method="post">
-
-    <h1> Targeted donation request! </h1> 
-    <h2> Who has attended all of our events? </h2> 
+    <h1 align="center"> Targeted donation request! </h1> 
+    <p align="center"> Who has attended all of our events? </p> 
+    <br> </br>
     <button type="submit" name="check">Check</button>
+</form>
+</div>
 
+<br> </br>
 
 <?php
     if (isset($_POST['check'])) {
