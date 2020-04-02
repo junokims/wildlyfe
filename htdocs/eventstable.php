@@ -235,7 +235,7 @@ class'>Total Events</th></tr>";
 <?php endif ?>
     <div class="testbox">
       <form action="" method="post">
-        <h1>Find event names with total attendees greater than the average</h1>
+        <h1>Find the Average Number of Events Across Type Categories</h1>
         <hr/>
         <div class="item desired-outcome">
           <button type="submit" name="save">Send</button>
@@ -248,16 +248,17 @@ class'>Total Events</th></tr>";
 $conn = OpenCon();
 if (isset($_POST['save'])) {
 
-$sql = "SELECT E1.Name_of_Event
-FROM events E1 WHERE E1.Number_of_Invitees > (SELECT AVG(E2.Number_of_Invitees) FROM events E2)";$result = $conn->query($sql);
+//SELECT AVG(Counts.count_items_purchased) FROM (SELECT COUNT(*) AS count_items_purchased FROM Purchase GROUP BY cust_id) AS Counts
+
+$sql = "SELECT AVG(av_events.events_per_cat) FROM (SELECT COUNT(*) AS events_per_cat FROM events GROUP BY Type) AS av_events";$result = $conn->query($sql);
 if ($result->num_rows > 0) {
 echo "<table><tr><th class='border-
-class'>Event Name</th></tr>";
+class'>Average</th></tr>";
 // output data of each row
 	while($row = $result->fetch_assoc()) 
 	{ echo "<tr><td
  class='border-
- class'>".$row["Name_of_Event"]."</td></tr>";
+ class'>".$row["AVG(av_events.events_per_cat)"]."</td></tr>";
  }
 	echo "</table>";
  } else {
