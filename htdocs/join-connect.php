@@ -3,7 +3,7 @@
 include 'animalpage.php';
 if (isset($_POST['check'])) {
     $animalid = $_POST['animal_id'];
-    $dbconnect = mysqli_connect('localhost', 'root', 'root', 'wyldlyfe')or die("initial host/db connection problem");
+    $dbconnect = mysqli_connect('localhost', 'root', 'root', 'wildlyfe')or die("initial host/db connection problem");
     $sql = "SELECT Food_Item_ID FROM Eats e, AnimalLivesIn ali WHERE ali.Animal_ID=e.Animal_ID AND ali.Species='$animalid'";
     $result = mysqli_query($dbconnect,$sql);
     if ($result->num_rows > 0) {

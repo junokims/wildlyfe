@@ -170,7 +170,7 @@ vartical-align: middle;
 
 </tr>
 <?php
-    $conn = mysqli_connect("localhost", "root", "root", "wyldlyfe");
+    $conn = mysqli_connect("localhost", "root", "root", "wildlyfe");
     // Check connection
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
@@ -212,7 +212,7 @@ vartical-align: middle;
 
 <?php
     if (isset($_POST['check'])) {
-        $dbconnect = mysqli_connect('localhost', 'root', 'root', 'wyldlyfe')or die("initial host/db connection problem");
+        $dbconnect = mysqli_connect('localhost', 'root', 'root', 'wildlyfe')or die("initial host/db connection problem");
         $sql = "SELECT Name FROM VisitorHasContactInformation V WHERE NOT EXISTS ((SELECT E.Event_ID FROM Events E) EXCEPT (SELECT A.Event_ID FROM Attends A WHERE A.Visitor_ID=V.Visitor_ID))";
         $result = mysqli_query($dbconnect,$sql);
 
