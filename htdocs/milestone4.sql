@@ -244,7 +244,15 @@ CREATE TABLE Eats(
 
 
 INSERT INTO Attends(Visitor_ID, Event_ID)
+VALUES (1,1);
+INSERT INTO Attends(Visitor_ID, Event_ID)
+VALUES (1,2);
+INSERT INTO Attends(Visitor_ID, Event_ID)
 VALUES (1,3);
+INSERT INTO Attends(Visitor_ID, Event_ID)
+VALUES (1,4);
+INSERT INTO Attends(Visitor_ID, Event_ID)
+VALUES (1,5);
 INSERT INTO Attends(Visitor_ID, Event_ID)
 VALUES (2,4);
 INSERT INTO Attends(Visitor_ID, Event_ID)
