@@ -221,26 +221,28 @@ CREATE TABLE Eats(
   VALUES (5, 'Brian Stephens', '1577 Some Street', 'brianstep@live.ca', '716-127-6527', STR_TO_DATE('1982-04-01', '%Y-%m-%d'));
 
   INSERT INTO TypeHost(Type, Host)
-  VALUES ('Birthday Party', 'Leslie Gore');
+  VALUES ('Party', 'Leslie Gore');
   INSERT INTO TypeHost(Type, Host)
   VALUES ('Fundraiser', 'Donna Summer');
   INSERT INTO TypeHost(Type, Host)
-  VALUES ('Work Party', 'Dwight Schrute');
+  VALUES ('Corporate Event', 'Dwight Schrute');
   INSERT INTO TypeHost(Type, Host)
   VALUES ('Class', 'Gillian Anderson');
   INSERT INTO TypeHost(Type, Host)
   VALUES ('Community Outreach', 'Brita Filter');
 
   INSERT INTO Events(Event_ID, Name_of_Event, Time, Event_date, Location, Number_of_Invitees, Type)
-  VALUES (1, 'Steves Birthday Party', '15:00', STR_TO_DATE('2020-04-01', '%Y-%m-%d'), 'West Wing', '20', 'Birthday Party');
+  VALUES (1, 'Rapping about Raptors', '15:00', STR_TO_DATE('2020-04-01', '%Y-%m-%d'), 'Conservatory', '20', 'Class');
   INSERT INTO Events(Event_ID, Name_of_Event, Time, Event_date, Location, Number_of_Invitees, Type)
-  VALUES (2, 'Als Birthday Party', '15:00', STR_TO_DATE('2020-04-02', '%Y-%m-%d'), 'West Wing', '3', 'Birthday Party');
+  VALUES (2, 'Summer Celebration', '15:00', STR_TO_DATE('2020-04-02', '%Y-%m-%d'), 'West Wing', '3', 'Party');
   INSERT INTO Events(Event_ID, Name_of_Event, Time, Event_date, Location, Number_of_Invitees, Type)
   VALUES (3, 'Michaels tots', '15:00', STR_TO_DATE('2020-04-03', '%Y-%m-%d'), 'West Wing', '15', 'Fundraiser');
   INSERT INTO Events(Event_ID, Name_of_Event, Time, Event_date, Location, Number_of_Invitees, Type)
   VALUES (4, 'Free food for all', '15:00', STR_TO_DATE('2020-04-04', '%Y-%m-%d'), 'West Wing', '60', 'Fundraiser');
   INSERT INTO Events(Event_ID, Name_of_Event, Time, Event_date, Location, Number_of_Invitees, Type)
-  VALUES (5, 'Employee Appreciation Day', '15:00', STR_TO_DATE('2020-04-05', '%Y-%m-%d'), 'West Wing', '34', 'Work Party');
+  VALUES (5, 'Employee Appreciation Day', '15:00', STR_TO_DATE('2020-04-05', '%Y-%m-%d'), 'West Wing', '34', 'Corporate Event');
+  INSERT INTO Events(Event_ID, Name_of_Event, Time, Event_date, Location, Number_of_Invitees, Type)
+  VALUES (5, 'Get Involved With Wildlyfe', '15:00', STR_TO_DATE('2020-04-05', '%Y-%m-%d'), 'Main Hall', '34', 'Community Outreach');
 
 
 INSERT INTO Attends(Visitor_ID, Event_ID)
@@ -486,3 +488,4 @@ INSERT INTO Eats(Animal_ID, Food_Item_ID)
 VALUES ('William the Wolf', 'Kibble');
 INSERT INTO Eats(Animal_ID, Food_Item_ID)
 VALUES ('Chip the Monkey', 'Bananas');
+© 2020 GitHub, Inc.

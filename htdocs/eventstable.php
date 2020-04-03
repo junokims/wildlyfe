@@ -235,7 +235,7 @@ class'>Total Events</th></tr>";
 <?php endif ?>
     <div class="testbox">
       <form action="" method="post">
-        <h1>Find the Average Number of Events Across Type Categories</h1>
+        <h1>Find the Average Number of Events Across Per Category</h1>
         <hr/>
         <div class="item desired-outcome">
           <button type="submit" name="save">Send</button>
