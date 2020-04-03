@@ -6,3 +6,5 @@ To install, first install XAMPP.
 Then, copy the htdocs folder into the directory where you have installed XAMPP.
 
 To insert a database, go to localhost/phpmyadmin.
+
+To navigate our webpage, please begin from localhost/welcome.php!
