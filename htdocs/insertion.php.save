@@ -1,3 +1,4 @@
+
 <?php  include('connect.php'); ?>
 <!DOCTYPE html>
 <html>
@@ -6,20 +7,10 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <style>
-html, body {
+      html, body {
       min-height: 100%;
       }
-      body {
-		  background-image: url("wildlife8.PNG");
-      padding: 100;
-      margin: 20000;
-      outline: none;
-      font-family: Roboto, Arial, sans-serif;
-      font-size: 14px;
-      color: #666;
-      line-height: 22px;
-      }
-	  body, div, form, input, select, p {
+      body, div, form, input, select, p {
       padding: 100;
       margin: 20000;
       outline: none;
@@ -46,7 +37,7 @@ html, body {
       width: 75%;
       padding: 20px;
       background: #fff;
-      box-shadow: 0 2px 5px #ccc;
+      box-shadow: 0 2pΩ
       }
       input, select, textarea {
       width: 100%;
@@ -167,40 +158,68 @@ html, body {
       textarea {
       width: calc(100% - 6px);
       }
-      }   
- </style>
+      }
+.button-container form, .button-container form div{
+display: inline;
+}
+l
+.button-container button {
+display: inline;
+vartical-align: middle;
+}
+    </style>
   </head>
   <body>
     <?php if (isset($_SESSION['message'])): ?>
 	<div class="msg">
-		<?php
-			echo $_SESSION['message'];
+		<?php 
+			echo $_SESSION['message']; 
 			unset($_SESSION['message']);
 		?>
 	</div>
 <?php endif ?>
     <div class="testbox">
-      <form action="connect-delete.php" method="post">
-        <h1>Delete an animal!</h1>
-        <p>Enter the ID of the animal you would like to delete below.</p>
+      <form  method="post">
+        <h1>Add a new animal!</h1>
+        <p>add his/her details below</p>
         <hr/>
         <div class="item">
           <p>Animal ID</p>
-          <input type="text" name="animal_id" placeholder="Animal ID" />
+          <input type="text" name="animal_id" placeholder="Full name" />
         </div>
-        <div class="item desired-outcome">
-          <button type="submit" name="save" href="/">Send</button>
-        </div>   
-  </form>
-    </div>
-	<div class = "testbox">
-	<form action="animalpage.php" method="post">
-	<h1>Back to Animal Page</h1>
-        <p>Return to the animal page.</p>
-		<div class="item desired-outcome">
-          <button type="submit" name="save">Back</button>
+        <div class="item">
+          <p>Enclosure ID</p>
+             <select name="EnclosureID" >
+              <option value="">Enclosure ID</option>
+              <option value="Hedgehog Enclosure">Hedgehog Enclosure</option>
+              <option value="Lizard Enclosure">Lizard Enclosure</option>
+              <option value="Monkey Enclosure">Monkey Enclosure</option>
+              <option value="Snake Enclosure">Snake Enclosure</option>
+              <option value="Wolf Enclosure">Wolf Enclosure</option>
+            </select>
         </div>
-      </form>
+        <div class="item">
+          <p>Species</p>
+          <select name= "Species">
+              <option value="">Species</option>
+              <option value="Hedgehog">Hedgehog</option>
+              <option value="Lizard">Lizard</option>
+              <option value="Monkey">Monkey</option>
+              <option value="Snake">Snake</option>
+              <option value="Wolf">Wolf</option>
+            </select>
+        </div>
+<div class="button-container">
+	<form action="connect-insertion.php">
+          <button type="submit" name="add an animal">Add an animal</button>
+	</form>
+
+ 	<form action="animalpage.php">
+	<button type="submit" name="return to our animal page" >Delete an animal</button>
+	</form>
+</div>
+ </form>
 </div>
   </body>
 </html>
+

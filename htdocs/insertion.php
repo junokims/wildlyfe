@@ -1,6 +1,4 @@
-
-<?php  include('connect-insertion.php'); ?>
-
+<?php  include('connect.php'); ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -11,7 +9,17 @@
       html, body {
       min-height: 100%;
       }
-      body, div, form, input, select, p {
+      body {
+       background-image: url("wildlife8.PNG");
+      padding: 100;
+      margin: 20000;
+      outline: none;
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 14px;
+      color: #666;
+      line-height: 22px;
+      }
+	  div, form, input, select, p {
       padding: 100;
       margin: 20000;
       outline: none;
@@ -172,7 +180,7 @@
 	</div>
 <?php endif ?>
     <div class="testbox">
-      <form action="connect-insertion.php" method="post">
+      <form action = "connect-insertion.php"  name="form"  method="post">
         <h1>Add a new animal!</h1>
         <p>add his/her details below</p>
         <hr/>
@@ -201,12 +209,20 @@
               <option value="Snake">Snake</option>
               <option value="Wolf">Wolf</option>
             </select>
-        </div>
         <div class="item desired-outcome">
           <button type="submit" name="save">Send</button>
         </div>
-      </form>
+</div>
+</form>
     </div>
-  </body>
+	<div class = "testbox">
+	<form action="animalpage.php" method="post">
+	<h1>Back to Animals</h1>
+        <p>Return to the animal page..</p>
+		<div class="item desired-outcome">
+          <button type="submit" name="save">Back</button>
+        </div>
+      </form>
+	  </div>
+ </body>
 </html>
-
