@@ -74,6 +74,9 @@ max-width: 56em;
   </head>
   <body>
     <div class = "container">
+    <img src="pet.png" align="center"  width="51" height="51">
+    <br></br>
+
     <div class="testbox">
         <h1>Welcome to Wildlyfe! Our trusty directory and database</h1>
         <br>
