@@ -20,9 +20,8 @@ padding: 1em 0;
 margin: 0 auto;
 max-width: 56em;
 }
-table {
-border-collapse: collapse
-background-color: white;
+div {
+border-collapse: collapse;
 width: 80%%;
 color: #666;
 font-family: Roboto, Arial, sans-serif;
@@ -117,27 +116,37 @@ font-family: Roboto, Arial, sans-serif;
 font-size: 20px;
 text-align: left;
 padding: 1em 0;
-margin: 0 auto;
 max-width: 56em;
+margin-bottom: 50 px;
 }
 th {
 background-color: #0070b5;
 color: white;
 }
+.button-container form, .button-container form div{
+margin-top:  50px;
+display: inline;
+}
+
+.button-container button {
+display: inline;
+vartical-align: middle;
+}
 </style>
 </head>
 <body>
 <div class = "container">
-<table align = "center">
-<h1> Employee Information </h1>
-<p> Unfortunately, you do not have permission to edit or delete employees without HR approval! However, for your own reference, Department #1 is our office, Department #2 is outdoors, Department #3 is our ticketing, events, and entry staff, and Department #5-6 are seasonal employees that assist everyone else! </p> 
+<table align="center" width= "1000" >
+<h1> Current Events </h1>
+<p> Check Out Our Events! </p> 
 <tr>
-<th>Employee Number</th>
-<th>Name</th>
-<th>Date of Birth</th>
-<th>Social Insurance Number</th>
-<th>Director Number</th>
-<th>Department Number</th>
+<th>Event ID</th>
+<th>Name of Event</th>
+<th>Time</th>
+<th>Date</th>
+<th>Location</th>
+<th>Number of Invitees</th>
+<th>Type</th>
 </tr>
 </div>
 <?php
@@ -146,14 +155,14 @@ $conn = mysqli_connect("localhost", "root", "root", "wildlyfe");
 if ($conn->connect_error) {
 die("Connection failed: " . $conn->connect_error);
 }
-$sql = "SELECT * FROM Employee";
+$sql = "SELECT * FROM events";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
 // output data of each row
 while($row = $result->fetch_assoc()) {
-echo "<tr><td>" . $row["Employee_Number"]. "</td><td>" . $row["Name"] . "</td><td>"
-. $row["DOB"]. "</td><td>" . $row["SIN"] . "</td><td>" . $row["Director_Number"] . 
-"</td><td>" . $row["Department_Number"] ."</td></tr>";
+echo "<tr><td>" . $row["Event_ID"]. "</td><td>" . $row["Name_of_Event"] . "</td><td>"
+. $row["Time"]. "</td><td>" . $row["Event_date"] . "</td><td>" . $row["Location"] . 
+"</td><td>" . $row["Number_of_Invitees"] ."</td><td>" . $row["Type"] ."</td></tr>";
 }
 echo "</table>";
 } else { echo "0 results"; }
@@ -161,44 +170,16 @@ $conn->close();
 ?>
 </table>
 
-<h1>See The Team</h1>
-<p>Featuring Wildlyfe's Finest!</p>
-<br>
+<div class="button-container">
+	<form action="insertionevent.php">
+          <button type="submit" name="add an event">Add an event</button>
+	</form>
 
-<div class="row">
-  <div class="column">
-    <div class="card">
-      <img src="emp1.jpg" alt="Jane" style="width:100%">
-      <div class="container2">
-        <h2>Laura Ruiz</h2>
-        <p class="title">CEO & Founder</p>
-        <p>What a boss!</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="column">
-    <div class="card">
-      <img src="emp2.jpg" alt="Mike" style="width:100%">
-      <div class="container2">
-        <h2>Lauren Ruiz</h2>
-        <p class="title">Animal Caretaker</p>
-        <p>The only thing they love more than Wildlyfe are the animals themselves.</p>
-      </div>
-    </div>
-  </div>
-  
-  <div class="column">
-    <div class="card">
-      <img src="emp3.png" alt="John" style="width:100%">
-      <div class="container2">
-        <h2>Lara Ruiz</h2>
-        <p class="title">Ticket Clerk</p>
-        <p>Customer service extraordinaire!</p>
-      </div>
-    </div>
-  </div>
+ 	<form action="deletionevent.php">        
+		<button type="submit" name="delete one of our animal">Remove an event</button>
+	</form>
 </div>
+
 
 
 <?php if (isset($_SESSION['message'])): ?>
@@ -210,20 +191,82 @@ $conn->close();
 	</div>
 <?php endif ?>
     <div class="testbox">
-      <form action="connect-selection.php" method="post">
-        <h1>See Entries Sold by Employee</h1>
+      <form action="" method="post">
+        <h1>Count Distinct Events</h1>
         <hr/>
-        <div class="item">
-          <p>Employee Number</p>
-          <input type="text" name="Employee_Number" placeholder="9999" />
+        <div class="item desired-outcome">
+          <button type="submit" name="check">Send</button>
         </div>
+      </form>
+    </div>
+	
+	<?php
+
+$conn = OpenCon();
+if (isset($_POST['check'])) {
+
+$sql = "SELECT Count(DISTINCT Event_ID) AS TotalEvents
+FROM events";$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+echo "<table><tr><th class='border-
+class'>Total Events</th></tr>";
+// output data of each row
+	while($row = $result->fetch_assoc()) 
+	{ echo "<tr><td
+ class='border-
+ class'>".$row["TotalEvents"]."</td></tr>";
+ }
+	echo "</table>";
+ } else {
+	echo "0 results";
+ }
+ CloseCon($conn);
+}
+ ?>
+	
+	
+<?php if (isset($_SESSION['message'])): ?>
+	<div class="msg">
+		<?php 
+			echo $_SESSION['message']; 
+			unset($_SESSION['message']);
+		?>
+	</div>
+<?php endif ?>
+    <div class="testbox">
+      <form action="" method="post">
+        <h1>Find the Average Number of Events Across Type Categories</h1>
+        <hr/>
         <div class="item desired-outcome">
           <button type="submit" name="save">Send</button>
         </div>
       </form>
     </div>
+	
+	<?php
 
+$conn = OpenCon();
+if (isset($_POST['save'])) {
 
+//SELECT AVG(Counts.count_items_purchased) FROM (SELECT COUNT(*) AS count_items_purchased FROM Purchase GROUP BY cust_id) AS Counts
+
+$sql = "SELECT AVG(av_events.events_per_cat) FROM (SELECT COUNT(*) AS events_per_cat FROM events GROUP BY Type) AS av_events";$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+echo "<table><tr><th class='border-
+class'>Average</th></tr>";
+// output data of each row
+	while($row = $result->fetch_assoc()) 
+	{ echo "<tr><td
+ class='border-
+ class'>".$row["AVG(av_events.events_per_cat)"]."</td></tr>";
+ }
+	echo "</table>";
+ } else {
+	echo "0 results";
+ }
+ CloseCon($conn);
+}
+ ?>
 
 
 </body>

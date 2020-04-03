@@ -1,16 +1,26 @@
-<?php  include('connect.php'); ?>
+<?php  include('connect-insertionevent.php'); ?>
 
 <!DOCTYPE html>
 <html>
   <head>
-    <title>See event count of distinct events</title>
+    <title>Add a new animal</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <style>
       html, body {
       min-height: 100%;
       }
-      body, div, form, input, select, p {
+      body {
+		  background-image: url("wildlife8.png");
+      padding: 100;
+      margin: 20000;
+      outline: none;
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 14px;
+      color: #666;
+      line-height: 22px;
+      }
+	  div, form, input, select, p {
       padding: 100;
       margin: 20000;
       outline: none;
@@ -171,13 +181,86 @@
 	</div>
 <?php endif ?>
     <div class="testbox">
-      <form action="connect-aggregation.php" method="post">
-        <h1>Count Distinct Events</h1>
+      <form action="connect-insertionevent.php" method="post">
+        <h1>Add an event</h1>
+        <p>Fill out the details below</p>
         <hr/>
+        <div class="item">
+          <p>Event_ID</p>
+          <input type="text" name="Event_ID" placeholder="Event ID" />
+        </div>
+		<div class="item">
+          <p>Event Name</p>
+          <input type="text" name="Name_of_Event" placeholder="Event Name" />
+        </div>
+        <div class="item">
+          <p>Time</p>
+             <select name="Time" >
+              <option value="">Time</option>
+              <option value="00:00">00:00</option>
+              <option value="01:00">01:00</option>
+              <option value="02:00">02:00</option>
+              <option value="03:00">03:00</option>
+              <option value="04:00">04:00</option>
+			  <option value="05:00">05:00</option>
+              <option value="06:00">06:00</option>
+              <option value="07:00">07:00</option>
+              <option value="08:00">08:00</option>
+              <option value="09:00">09:00</option>
+			  <option value="10:00">10:00</option>
+              <option value="11:00">11:00</option>
+              <option value="12:00">12:00</option>
+              <option value="13:00">13:00</option>
+              <option value="14:00">14:00</option>
+			  <option value="15:00">15:00</option>
+              <option value="16:00">16:00</option>
+              <option value="17:00">17:00</option>
+              <option value="18:00">18:00</option>
+              <option value="19:00">19:00</option>
+			  <option value="20:00">20:00</option>
+              <option value="21:00">21:00</option>
+              <option value="22:00">22:00</option>
+              <option value="23:00">23:00</option>
+            </select>
+        </div>
+		
+		<div class="item">
+		<p>Date</p>
+			<label for="Event_date">Date:</label>
+			<input type="text" name="Event_date" placeholder="YYYY-MM-DD" />
+		</div>
+		
+		<div class="item">
+          <p>Location</p>
+          <input type="text" name="Location" placeholder="Location" />
+        </div>
+		<div class="item">
+          <p>Number of Invitees</p>
+          <input type="text" name="Number_of_Invitees" placeholder="Number of Invitees" />
+        </div>
+        <div class="item">
+          <p>Type</p>
+          <select name= "Type">
+              <option value="Class">Class</option>
+              <option value="Community Outreach">Community Outreach</option>
+              <option value="Corporate Event">Corporate Event</option>
+              <option value="Fundraiser">Fundraiser</option>
+              <option value="Party">Party</option>\
+            </select>
+        </div>
         <div class="item desired-outcome">
           <button type="submit" name="save">Send</button>
         </div>
-      </form>
+		</form>
     </div>
+	<div class = "testbox">
+	<form action="eventstable.php" method="post">
+	<h1>Back to Events</h1>
+        <p>Return to the events page.</p>
+		<div class="item desired-outcome">
+          <button type="submit" name="save">Back</button>
+        </div>
+      </form>
+	  </div>
   </body>
 </html>

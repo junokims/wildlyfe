@@ -1,16 +1,26 @@
-<?php  include('connect.php'); ?>
+<?php  include('connect-deleteevent.php'); ?>
 
 <!DOCTYPE html>
 <html>
   <head>
-    <title>See Events with the Most Attendees</title>
+    <title>Remove an Event</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <style>
       html, body {
       min-height: 100%;
       }
-      body, div, form, input, select, p {
+      body {
+		  background-image: url("wildlife8.png");
+      padding: 100;
+      margin: 20000;
+      outline: none;
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 14px;
+      color: #666;
+      line-height: 22px;
+      }
+	  body, div, form, input, select, p {
       padding: 100;
       margin: 20000;
       outline: none;
@@ -164,20 +174,34 @@
   <body>
     <?php if (isset($_SESSION['message'])): ?>
 	<div class="msg">
-		<?php 
-			echo $_SESSION['message']; 
+		<?php
+			echo $_SESSION['message'];
 			unset($_SESSION['message']);
 		?>
 	</div>
 <?php endif ?>
     <div class="testbox">
-      <form action="connect-nested.php" method="post">
-        <h1>Find event names with total attendees greater than the average</h1>
+      <form action="connect-deleteevent.php" method="post">
+        <h1>Remove an Event</h1>
+        <p>Enter the ID of the event you would like to delete below.</p>
         <hr/>
+        <div class="item">
+          <p>Event ID</p>
+          <input type="text" name="Event_ID" placeholder="ID" />
+        </div>
         <div class="item desired-outcome">
-          <button type="submit" name="save">Send</button>
+          <button type="submit" name="save" href="/">Send</button>
+        </div>
+		</form>
+	</div>
+	<div class = "testbox">
+	<form action="eventstable.php" method="post">
+	<h1>Back to Events</h1>
+        <p>Return to the events page.</p>
+		<div class="item desired-outcome">
+          <button type="submit" name="save">Back</button>
         </div>
       </form>
-    </div>
+	  </div>
   </body>
 </html>
