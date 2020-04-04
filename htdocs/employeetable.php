@@ -175,6 +175,69 @@ $conn->close();
 ?>
 </table>
 
+ <?php if (isset($_SESSION['message'])): ?>
+	<div class="msg">
+		<?php 
+			echo $_SESSION['message']; 
+			unset($_SESSION['message']);
+		?>
+	</div>
+    <?php endif ?>
+    
+    <div class="testbox">
+    <tr>
+    <h1>Project something!</h1>
+    </tr>
+  </div>
+
+  <div>
+    <tr>
+      <form method = "post" action="employeetable.php">
+          <label for="field">Choose a field to project:</label>
+              <select id="field" name="selected_field">
+                  <option value="employee_number">Employee_Number</option>
+                  <option value="name">Name</option>
+                  <option value="dob">DOB</option>
+                  <option value="sin">SIN</option>
+                  <option value="director_number">Director_Number</option>
+                  <option value="department_number">Department_Number</option>
+
+              </select>
+              <button type="submit" name="submit_form">Submit</button>      </form>
+    </tr>
+  </div>
+  
+  <?php
+if (isset($_POST['submit_form'])) {
+    $someFieldToProject = $_POST['selected_field'];
+    if (empty($someFieldToProject)) {
+        echo "Name is empty";
+    } else {
+        echo $someFieldToProject;
+        $dbconnect = mysqli_connect('localhost', 'root', 'root', 'wildlyfe')or die("initial host/db connection problem");
+
+
+        $sql = "SELECT ".$someFieldToProject." FROM employee";
+
+        $result = mysqli_query($dbconnect,$sql);
+        
+        echo "<table>";
+        echo "<tr><th>$someFieldToProject</th></tr>";
+        
+        while($row = mysqli_fetch_array($result)) {
+            echo "<tr><td style='width: 200px;'>".$row[$someFieldToProject]."</td></tr>";
+        } 
+        
+        echo "</table>";
+        mysqli_close($dbconnect);
+
+    }
+
+}
+
+?>
+
+
 <h1>See The Team</h1>
 <p>Featuring wildlyfe's Finest!</p>
 <br>
