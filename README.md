@@ -54,4 +54,4 @@ Now if you click on wildlyfe again, you should see all the tables are populated!
 
 5) Launch the Site
 
-You are now ready to navigate to our site. Please begin at localhost/welcome.php !
+You are now ready to navigate to our site. Please begin at localhost/login.html !
