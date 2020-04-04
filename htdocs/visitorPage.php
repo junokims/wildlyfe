@@ -1,4 +1,4 @@
-<?php  include('connect-insertion.php'); ?>
+<?php  include('connect.php'); ?>
 
 <!DOCTYPE html>
 
