@@ -1,5 +1,33 @@
+<<<<<<< HEAD
 <?php  include('connect-delete.php'); ?>
 
+=======
+<?php  include('connect.php'); ?>
+<!DOCTYPE html>
+<?php
+ob_start();
+var_dump($myVar);
+$data = ob_get_clean();
+$conn = OpenCon();
+if (isset($_POST['save'])) {
+$animalid = $_POST['animal_id'];
+$msg ='';
+$res = mysqli_query($conn, "SELECT COUNT(`Animal_ID`) c  FROM AnimalLivesIn WHERE `Animal_ID`='$animalid'");
+$row = mysqli_fetch_assoc($res);
+$C = $row['c'];
+if ($C==1)
+{
+  $sql ="DELETE from AnimalLivesIn WHERE Animal_ID='$animalid'";
+  $run = mysqli_query($conn, $sql);
+  $msg= "<p style=';color:#545454;;text-align:center'> $animalid has been deleted!</p>";
+}
+else
+{
+  $msg= "<p style=';color:#545454;;text-align:center'> Looks like $animalid isn't in our system. Please try again.!</p>";
+}
+}
+?>
+>>>>>>> laura
 <!DOCTYPE html>
 <html>
   <head>
@@ -7,10 +35,27 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <style>
+<<<<<<< HEAD
       html, body {
       min-height: 100%;
       }
       body, div, form, input, select, p {
+=======
+html, body {
+      min-height: 100%;
+      }
+      body {
+		  background-image: url("wildlife8.PNG");
+      padding: 100;
+      margin: 20000;
+      outline: none;
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 14px;
+      color: #666;
+      line-height: 22px;
+      }
+	  body, div, form, input, select, p {
+>>>>>>> laura
       padding: 100;
       margin: 20000;
       outline: none;
@@ -158,8 +203,13 @@
       textarea {
       width: calc(100% - 6px);
       }
+<<<<<<< HEAD
       }
     </style>
+=======
+      }   
+ </style>
+>>>>>>> laura
   </head>
   <body>
     <?php if (isset($_SESSION['message'])): ?>
@@ -171,12 +221,17 @@
 	</div>
 <?php endif ?>
     <div class="testbox">
+<<<<<<< HEAD
       <form action="connect-delete.php" method="post">
+=======
+      <form  method="post">
+>>>>>>> laura
         <h1>Delete an animal!</h1>
         <p>Enter the ID of the animal you would like to delete below.</p>
         <hr/>
         <div class="item">
           <p>Animal ID</p>
+<<<<<<< HEAD
           <input type="text" name="animal_id" placeholder="Full name" />
         </div>
         <div class="item desired-outcome">
@@ -186,3 +241,28 @@
     </div>
   </body>
 </html>
+=======
+          <input type="text" name="animal_id" placeholder="Animal ID" />
+        </div>
+        <div class="item desired-outcome">
+          <button type="submit" name="save" >Send</button
+<?php
+    if (isset($msg)) {
+        echo "<div>" . $msg . "</div>";
+    }
+    ?>>
+        </div>   
+  </form>
+    </div>
+	<div class = "testbox">
+	<form action="animalpage.php" method="post">
+	<h1>Back to Animal Page</h1>
+        <p>Return to the animal page.</p>
+		<div class="item desired-outcome">
+          <button type="submit" name="save">Back</button>
+	</div>
+      </form>
+</div>
+  </body>
+</html>
+>>>>>>> laura

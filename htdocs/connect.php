@@ -4,7 +4,11 @@ function OpenCon()
 	$dbhost = "localhost";
 	$dbuser ="root";
 	$dbpass ="root";
+<<<<<<< HEAD
 	$db = "wildlyfe";
+=======
+	$db = "Wildlyfe";
+>>>>>>> laura
 	$conn = new mysqli($dbhost, $dbuser,
 	$dbpass,$db) or die("Connect failed: %s\n".
 	$conn -> error);
@@ -14,4 +18,8 @@ function OpenCon()
  {
 	$conn -> close();
  }
+<<<<<<< HEAD
  ?>
+=======
+ ?>
+>>>>>>> laura

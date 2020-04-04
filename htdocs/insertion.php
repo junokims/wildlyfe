@@ -1,6 +1,33 @@
+<<<<<<< HEAD
 <?php  include('connect-insertion.php'); ?>
 
 <!DOCTYPE html>
+=======
+<?php  include('connect.php'); ?>
+<!DOCTYPE html>
+<?php
+ob_start();
+var_dump($myVar);
+$data = ob_get_clean();
+$conn = OpenCon();
+if (isset($_POST['save'])) {
+  $animalid = $_POST['animal_id'];
+  $enclosureid = $_POST['EnclosureID'];
+  $species = $_POST['Species'];
+  $msg = '';
+$sql ="INSERT into AnimalLivesIn (Animal_ID, Enclosure_ID, Species)  VALUES ('$animalid', '$enclosureid', '$species')";
+                if(mysqli_query($conn,$sql)){
+                   $msg =  "<p style= 'text-align:center'> $animalid has been added! they'll love it here!</p>";                   
+                }else{
+                   if(mysqli_errno($conn) == 1062)
+             $msg =  "<p style='text-align:center'> Looks like $animalid is already in our system. Please try again.</p>"; 
+                else  
+                    $msg =  "we've run into an error!:".$query."<br>";
+
+         }
+}
+ ?>
+>>>>>>> laura
 <html>
   <head>
     <title>Add a new animal</title>
@@ -10,7 +37,21 @@
       html, body {
       min-height: 100%;
       }
+<<<<<<< HEAD
       body, div, form, input, select, p {
+=======
+      body {
+       background-image: url("wildlife8.PNG");
+      padding: 100;
+      margin: 20000;
+      outline: none;
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 14px;
+      color: #666;
+      line-height: 22px;
+      }
+          div, form, input, select, p {
+>>>>>>> laura
       padding: 100;
       margin: 20000;
       outline: none;
@@ -163,6 +204,7 @@
   </head>
   <body>
     <?php if (isset($_SESSION['message'])): ?>
+<<<<<<< HEAD
 	<div class="msg">
 		<?php 
 			echo $_SESSION['message']; 
@@ -172,6 +214,17 @@
 <?php endif ?>
     <div class="testbox">
       <form action="connect-insertion.php" method="post">
+=======
+        <div class="msg">
+                <?php 
+                        echo $_SESSION['message']; 
+                        unset($_SESSION['message']);
+                ?>
+        </div>
+<?php endif ?>
+    <div class="testbox">
+      <form  name="form"  method="post">
+>>>>>>> laura
         <h1>Add a new animal!</h1>
         <p>add his/her details below</p>
         <hr/>
@@ -200,6 +253,7 @@
               <option value="Snake">Snake</option>
               <option value="Wolf">Wolf</option>
             </select>
+<<<<<<< HEAD
         </div>
         <div class="item desired-outcome">
           <button type="submit" name="save">Send</button>
@@ -208,3 +262,30 @@
     </div>
   </body>
 </html>
+=======
+</div>
+        <div class="item desired-outcome">
+          <button type="submit" name="save">Send</button>
+        </div>    
+   <?php
+    if (isset($msg)) {
+        echo "<div>" . $msg . "</div>";
+    }
+    ?>>
+    </div>
+</div>
+</form>
+    </div>
+        <div class = "testbox">
+        <form action="animalpage.php" method="post">
+        <h1>Back to Animals</h1>
+        <p>Return to the animal page..</p>
+                <div class="item desired-outcome">
+          <button type="submit" name="save">Back</button>
+        </div>
+      </form>
+          </div>
+ </body>
+</html>
+
+>>>>>>> laura
