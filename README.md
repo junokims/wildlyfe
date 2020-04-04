@@ -8,26 +8,26 @@ To install, first install XAMPP. You can find XAMPP at https://www.apachefriends
 
 Ensure all checkboxes are selected during the installation.
 
-![](htdocs/installer1.png)
+![](wildlyfe/htdocs/installer1.png)
 
 Select your new Xampp folder to do the installation. 
 
-![](htdocs/installer2.png)
+![](wildlyfe/htdocs/installer2.png)
 
 Your wildlyfe folder should now look like this:
 
-![](htdocs/installer3.png)
+![](wildlyfe/htdocs/installer3.png)
 
 
 2) Download the Repo
 
 Download the repository. Copy the files from the repo's htdocs to the htdocs of your Xampp folder. If done correctly, your Xampp folde should now look like this:
 
-![](htdocs/installer4.png)
+![](wildlyfe/htdocs/installer4.png)
 
 3) Launch Xampp by clicking on the Xampp control file highlighted below. 
 
-![](htdocs/installer5.png)
+![](wildlyfe/htdocs/installer5.png)
 
 Press the "Start" button for both Apache and MySQL. Allow acess if you are prompted to do so. 
 
@@ -36,21 +36,21 @@ Press the "Start" button for both Apache and MySQL. Allow acess if you are promp
 In your browser, you should be able to navigate to localhost/phpmyadmin and see the page.
 First we will need to edit privileges by going to the User Accounts Tab and clicking on Edit Privileges next to localhost.
 
-![](htdocs/installer8.png)
+![](wildlyfe/htdocs/installer8.png)
 
 Then go on the login tab and navigate to the change password tab, where you will change it to root.
 
-![](htdocs/installer9.png)
+![](wildlyfe/htdocs/installer9.png)
 
 Now click on Databases, highlighted below. 
 
-![](htdocs/installer6.png)
+![](wildlyfe/htdocs/installer6.png)
 
 Click create a database and call it "wildlyfe". The exact naming of this database is extremely important otherwise the queries will not work!
 
 Now, click on the SQL tab and copy paste all the text from the milestone4.sql file in htdocs to that textbox. Press Go in the lower right-hand corner. 
 
-![](htdocs/installer7.png)
+![](wildlyfe/htdocs/installer7.png)
 
 Now if you click on wildlyfe again, you should see all the tables are populated! Congrats! You created the database.
 
