@@ -242,7 +242,7 @@ CREATE TABLE Eats(
   INSERT INTO Events(Event_ID, Name_of_Event, Time, Event_date, Location, Number_of_Invitees, Type)
   VALUES (5, 'Employee Appreciation Day', '15:00', STR_TO_DATE('2020-04-05', '%Y-%m-%d'), 'West Wing', '34', 'Corporate Event');
   INSERT INTO Events(Event_ID, Name_of_Event, Time, Event_date, Location, Number_of_Invitees, Type)
-  VALUES (5, 'Get Involved With Wildlyfe', '15:00', STR_TO_DATE('2020-04-05', '%Y-%m-%d'), 'Main Hall', '34', 'Community Outreach');
+  VALUES (6, 'Get Involved With Wildlyfe', '15:00', STR_TO_DATE('2020-04-05', '%Y-%m-%d'), 'Main Hall', '34', 'Community Outreach');
 
 
 INSERT INTO Attends(Visitor_ID, Event_ID)
@@ -488,4 +488,3 @@ INSERT INTO Eats(Animal_ID, Food_Item_ID)
 VALUES ('William the Wolf', 'Kibble');
 INSERT INTO Eats(Animal_ID, Food_Item_ID)
 VALUES ('Chip the Monkey', 'Bananas');
-© 2020 GitHub, Inc.
