@@ -30,10 +30,6 @@ else
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <style>
-      html, body {
-      min-height: 100%;
-      }
-      body, div, form, input, select, p {
 html, body {
       min-height: 100%;
       }
@@ -195,8 +191,8 @@ html, body {
       textarea {
       width: calc(100% - 6px);
       }
-      }
-    </style>
+      }   
+ </style>
   </head>
   <body>
     <?php if (isset($_SESSION['message'])): ?>
@@ -214,15 +210,6 @@ html, body {
         <hr/>
         <div class="item">
           <p>Animal ID</p>
-          <input type="text" name="animal_id" placeholder="Full name" />
-        </div>
-        <div class="item desired-outcome">
-          <button type="submit" name="save" href="/">Send</button>
-        </div>
-      </form>
-    </div>
-  </body>
-</html>
           <input type="text" name="animal_id" placeholder="Animal ID" />
         </div>
         <div class="item desired-outcome">

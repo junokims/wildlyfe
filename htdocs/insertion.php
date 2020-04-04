@@ -12,7 +12,8 @@ if (isset($_POST['save'])) {
   $species = $_POST['Species'];
   $msg = '';
 $sql ="INSERT into AnimalLivesIn (Animal_ID, Enclosure_ID, Species)  VALUES ('$animalid', '$enclosureid', '$species')";
-                if(mysqli_query($conn,$sql)){
+                if(mysqli_
+                   ($conn,$sql)){
                    $msg =  "<p style= 'text-align:center'> $animalid has been added! they'll love it here!</p>";                   
                 }else{
                    if(mysqli_errno($conn) == 1062)
@@ -217,14 +218,6 @@ $sql ="INSERT into AnimalLivesIn (Animal_ID, Enclosure_ID, Species)  VALUES ('$a
         </div>
         <div class="item desired-outcome">
           <button type="submit" name="save">Send</button>
-        </div>
-      </form>
-    </div>
-  </body>
-</html>
-</div>
-        <div class="item desired-outcome">
-          <button type="submit" name="save">Send</button>
         </div>    
    <?php
     if (isset($msg)) {
@@ -246,4 +239,3 @@ $sql ="INSERT into AnimalLivesIn (Animal_ID, Enclosure_ID, Species)  VALUES ('$a
           </div>
  </body>
 </html>
-
