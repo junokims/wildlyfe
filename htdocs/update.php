@@ -100,7 +100,7 @@ $run = mysqli_query($conn, $sql);
 if (isset($_POST['update7'])) {
   $visitorid2 = $_POST['visitor_id2'];
   $eventid = $_POST['event'];
-  $sql = "INSERT into Attends(visitor_id, event_id) VALUES ('$visitorid2', '$eventid')";
+  $sql = "INSERT into attends(visitor_id, event_id) VALUES ('$visitorid2', '$eventid')";
   $run = mysqli_query($conn, $sql);
   $msg="<p style='text-align:center'> Event with ID #$eventid has been updated with $visitorid2 now attending!</p>";
 
@@ -354,7 +354,7 @@ if (isset($_POST['update7'])) {
 	<div class = "testbox">
 	<form action="visitorPage.php" method="post">
 	<h1>Back to Visitors</h1>
-        <p>Return to the visitor page..</p>
+        <p>Return to the visitor page.</p>
 		<div class="item desired-outcome">
           <button type="submit" name="save">Back</button>
         </div>

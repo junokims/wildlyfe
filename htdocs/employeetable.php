@@ -32,9 +32,6 @@ padding: 1em 0;
 margin: 0 auto;
 max-width: 56em;
 }
-<<<<<<< HEAD
-
-=======
 input {
 border-collapse: collapse;
 width: 80%;

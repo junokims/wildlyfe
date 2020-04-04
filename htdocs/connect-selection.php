@@ -6,8 +6,8 @@ include 'employeetable.php';$conn = OpenCon();
 if (isset($_POST['save'])) {
 (int)$Enum = (int)$_POST['employee_number'];
 
-$sql = "SELECT entry_number
-FROM sells WHERE employee_number ='$Enum' ";$result = $conn->query($sql);
+$sql = "SELECT entry_number FROM sells WHERE employee_number ='$Enum'";
+$result = $conn->query($sql);
 if ($result->num_rows > 0) {
 echo "<table><tr><th class='border-
 class'>Entry Number</th></tr>"; 

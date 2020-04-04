@@ -215,7 +215,7 @@ vartical-align: middle;
 <?php
     if (isset($_POST['check'])) {
         $dbconnect = mysqli_connect('localhost', 'root', 'root', 'wildlyfe')or die("initial host/db connection problem");
-        $sql = "SELECT name FROM visitorhascontactinformation V WHERE NOT EXISTS ((SELECT E.event_id FROM Events E) EXCEPT (SELECT A.event_id FROM attends A WHERE A.visitor_id=V.visitor_id))";
+        $sql = "SELECT name FROM visitorhascontactinformation V WHERE NOT EXISTS ((SELECT E.event_id FROM events E) EXCEPT (SELECT A.event_id FROM attends A WHERE A.visitor_id=V.visitor_id))";
         $result = mysqli_query($dbconnect,$sql);
 
         if ($result->num_rows > 0) {
