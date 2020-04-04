@@ -8,26 +8,24 @@ To install, first install XAMPP. You can find XAMPP at https://www.apachefriends
 
 Ensure all checkboxes are selected during the installation.
 
-![](wildlyfe/htdocs/installer1.png)
+<img src= "htdocs/Installer1.PNG" >
 
 Select your new Xampp folder to do the installation. 
 
-![](wildlyfe/htdocs/installer2.png)
-
 Your wildlyfe folder should now look like this:
 
-![](wildlyfe/htdocs/installer3.png)
+<img src= "htdocs/Installer3.PNG" >
 
 
 2) Download the Repo
 
-Download the repository. Copy the files from the repo's htdocs to the htdocs of your Xampp folder. If done correctly, your Xampp folde should now look like this:
+Download the repository. Copy the files from the repo's htdocs to the htdocs of your Xampp folder. If done correctly, your Xampp folder should now look like this:
 
-![](wildlyfe/htdocs/installer4.png)
+<img src= "htdocs/Installer4.PNG" >
 
 3) Launch Xampp by clicking on the Xampp control file highlighted below. 
 
-![](wildlyfe/htdocs/installer5.png)
+<img src= "htdocs/Installer5.PNG" >
 
 Press the "Start" button for both Apache and MySQL. Allow acess if you are prompted to do so. 
 
@@ -36,21 +34,21 @@ Press the "Start" button for both Apache and MySQL. Allow acess if you are promp
 In your browser, you should be able to navigate to localhost/phpmyadmin and see the page.
 First we will need to edit privileges by going to the User Accounts Tab and clicking on Edit Privileges next to localhost.
 
-![](wildlyfe/htdocs/installer8.png)
+<img src= "htdocs/Installer8.PNG" >
 
 Then go on the login tab and navigate to the change password tab, where you will change it to root.
 
-![](wildlyfe/htdocs/installer9.png)
+<img src= "htdocs/installer9.PNG" >
 
 Now click on Databases, highlighted below. 
 
-![](wildlyfe/htdocs/installer6.png)
+<img src= "htdocs/Installer6.PNG" >
 
 Click create a database and call it "wildlyfe". The exact naming of this database is extremely important otherwise the queries will not work!
 
 Now, click on the SQL tab and copy paste all the text from the milestone4.sql file in htdocs to that textbox. Press Go in the lower right-hand corner. 
 
-![](wildlyfe/htdocs/installer7.png)
+<img src= "htdocs/Installer7.PNG" >
 
 Now if you click on wildlyfe again, you should see all the tables are populated! Congrats! You created the database.
 
