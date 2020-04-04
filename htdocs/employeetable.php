@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> laura
 <?php  include('connect.php'); ?>
 <!DOCTYPE html>
 <html>
@@ -13,11 +9,7 @@ html {
 }
 
 body {
-<<<<<<< HEAD
-background-image: url("wildlife8.png");
-=======
 background-image: url("wildlife8.PNG");
->>>>>>> laura
 border-collapse: collapse;
 width: 80%%;
 color: #666;
@@ -54,7 +46,6 @@ padding: 1em 0;
 margin: 0 auto;
 max-width: 56em;
 }
->>>>>>> laura
 *, *:before, *:after {
   box-sizing: inherit;
 }
@@ -73,21 +64,13 @@ max-width: 56em;
   }
 }
  input, select, textarea {
-<<<<<<< HEAD
-      width: 100%;
-=======
       width: 25%;
->>>>>>> laura
       margin-bottom: 10px;
       border: 1px solid #ccc;
       border-radius: 3px;
       }
       input {
-<<<<<<< HEAD
       width: calc(100% - 10px);
-=======
-      width: calc(50% - 10px);
->>>>>>> laura
       padding: 5px;
       }
       input:hover, textarea:hover, select:hover {
@@ -171,11 +154,7 @@ color: white;
 </tr>
 </div>
 <?php
-<<<<<<< HEAD
 $conn = mysqli_connect("localhost", "root", "root", "wildlyfe");
-=======
-$conn = mysqli_connect("localhost", "root", "root", "wildlyfe");
->>>>>>> laura
 // Check connection
 if ($conn->connect_error) {
 die("Connection failed: " . $conn->connect_error);
@@ -221,11 +200,7 @@ $conn->close();
       </div>
     </div>
   </div>
-<<<<<<< HEAD
-  
-=======
-
->>>>>>> laura
+	
   <div class="column">
     <div class="card">
       <img src="emp3.png" alt="John" style="width:100%">
@@ -238,19 +213,6 @@ $conn->close();
   </div>
 </div>
 
-
-<?php if (isset($_SESSION['message'])): ?>
-	<div class="msg">
-<<<<<<< HEAD
-		<?php 
-=======
-		<?php
->>>>>>> laura
-			echo $_SESSION['message']; 
-			unset($_SESSION['message']);
-		?>
-	</div>
-<?php endif ?>
     <div class="testbox">
       <form action="connect-selection.php" method="post">
         <h1>See Entries Sold by Employee</h1>
