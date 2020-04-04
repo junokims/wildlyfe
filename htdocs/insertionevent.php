@@ -11,7 +11,7 @@
       min-height: 100%;
       }
       body {
-		  background-image: url("wildlife8.png");
+background-image: url("wildlife8.PNG");
       padding: 100;
       margin: 20000;
       outline: none;

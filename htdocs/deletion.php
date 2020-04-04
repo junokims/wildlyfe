@@ -220,6 +220,7 @@ html, body {
     }
     ?>
         </div>   
+</div>
   </form>
     </div>
 	<div class = "testbox">
