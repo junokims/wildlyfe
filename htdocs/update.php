@@ -318,7 +318,7 @@ $run = mysqli_query($conn, $sql);
     if (isset($msg)) {
         echo "<div>" . $msg . "</div>";
     }
-    ?>>     
+    ?>     
  </form>
  </div>
 </div>
