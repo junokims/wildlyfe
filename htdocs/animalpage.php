@@ -157,7 +157,7 @@ vartical-align: middle;
     <table align="center" >
     <h1> View our animals and their enclosure below! </h1>
     <p> As you'll notice, we have a knack for naming our animals non-traditional names, it's part of our charm..</p>
-    <p> Below, you'll find you can add a new animal to our facilities, or delete one as needed! Unfortunately you'll be unable to edit any details as of now as you require caretake approval to do so. </p>
+    <p> Below, you'll find you can add a new animal to our facilities, or delete one as needed! Unfortunately you'll be unable to edit any details as of now as you require caretaker approval to do so. </p>
     <br> </br>
     <tr>
     <th>Animal ID</th>
