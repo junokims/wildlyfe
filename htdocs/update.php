@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-<!DOCTYPE html>
-=======
 <?php  include('connect.php'); ?>
 <!DOCTYPE html>
 <?php
@@ -100,21 +97,11 @@ $run = mysqli_query($conn, $sql);
 
 }
 ?>
->>>>>>> laura
 <html>
   <head>
     <title>Simple Complaint Form</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-<<<<<<< HEAD
-    <style>
-      html, body {
-      min-height: 100%;
-      }
-      body, div, form, input, select, p {
-      padding: 0;
-      margin: 0;
-=======
 <style>
       html, body {
       min-height: 100%;
@@ -132,7 +119,6 @@ $run = mysqli_query($conn, $sql);
 	  div, form, input, select, p {
       padding: 100;
       margin: 20000;
->>>>>>> laura
       outline: none;
       font-family: Roboto, Arial, sans-serif;
       font-size: 14px;
@@ -185,10 +171,6 @@ $run = mysqli_query($conn, $sql);
       display: flex;
       flex-direction: column;
       margin: 10px 0;
-<<<<<<< HEAD
-      margin-right: 10px
-=======
->>>>>>> laura
       }
       input[type="date"]::-webkit-inner-spin-button {
       display: none;
@@ -295,11 +277,7 @@ $run = mysqli_query($conn, $sql);
        </div>
      <?php endif ?>
     <div class="testbox">
-<<<<<<< HEAD
-      <form action="connect-update.php" method="post">
-=======
       <form method="post">
->>>>>>> laura
         <h1>View or Edit Visitor Details</h1>
         <p>Find below our current registered visitors. If you would like to update any information
           fill the form below our table by entering the ID you would like to update</p>
@@ -316,11 +294,7 @@ $run = mysqli_query($conn, $sql);
           <p>Name</p>
           <input type="text" name="name" placeholder="Name"  />
           <button type="save" name='update2'>Update</button>
-<<<<<<< HEAD
-        </div>
-=======
  </div>
->>>>>>> laura
         <div class="input-group">
           <p>Date of Birth</p>
           <input type="text" name="birthday" placeholder="Dob"/>
@@ -340,12 +314,6 @@ $run = mysqli_query($conn, $sql);
           <p>Phone number</p>
           <input type="text" name="phonenumber" placeholder="111-111-1111"/>
           <button type="save" name='update6'>Update</button>
-<<<<<<< HEAD
-      </form>
-    </div>
-  </body>
-</html>
-=======
    <?php
     if (isset($msg)) {
         echo "<div>" . $msg . "</div>";
@@ -365,4 +333,3 @@ $run = mysqli_query($conn, $sql);
 	  </div>
   </body>
 </html>
->>>>>>> laura
