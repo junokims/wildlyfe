@@ -163,7 +163,7 @@ vartical-align: middle;
 </tr>
 </div>
 <?php
-$conn = mysqli_connect("localhost", "root", "root", "Wildlyfe");
+$conn = mysqli_connect("localhost", "root", "root", "wildlyfe");
 // Check connection
 if ($conn->connect_error) {
 die("Connection failed: " . $conn->connect_error);

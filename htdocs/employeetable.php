@@ -174,7 +174,7 @@ color: white;
 <<<<<<< HEAD
 $conn = mysqli_connect("localhost", "root", "root", "wildlyfe");
 =======
-$conn = mysqli_connect("localhost", "root", "root", "Wildlyfe");
+$conn = mysqli_connect("localhost", "root", "root", "wildlyfe");
 >>>>>>> laura
 // Check connection
 if ($conn->connect_error) {
@@ -196,7 +196,7 @@ $conn->close();
 </table>
 
 <h1>See The Team</h1>
-<p>Featuring Wildlyfe's Finest!</p>
+<p>Featuring wildlyfe's Finest!</p>
 <br>
 
 <div class="row">
@@ -217,7 +217,7 @@ $conn->close();
       <div class="container2">
         <h2>Lauren Ruiz</h2>
         <p class="title">Animal Caretaker</p>
-        <p>The only thing they love more than Wildlyfe are the animals themselves.</p>
+        <p>The only thing they love more than wildlyfe are the animals themselves.</p>
       </div>
     </div>
   </div>

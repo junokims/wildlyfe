@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Welcome to Wildlyfe! Our trusty directory and database</title>
+    <title>Welcome to wildlyfe! Our trusty directory and database</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <style>
@@ -76,7 +76,7 @@ max-width: 56em;
     <br></br>
 
     <div class="testbox">
-        <h1>Welcome to Wildlyfe! Our trusty directory and database</h1>
+        <h1>Welcome to wildlyfe! Our trusty directory and database</h1>
         <br>
       </br>
       <p>View our options below and select according to what you're looking for.</p> 

@@ -4,7 +4,7 @@ if (isset($_POST['save'])) {
 $animalid = $_POST['animal_id'];
 
 
-$dbconnect = mysqli_connect('localhost', 'root', 'root', 'wyldlyfe')or die("initial host/db connection problem");
+$dbconnect = mysqli_connect('localhost', 'root', 'root', 'wildlyfe')or die("initial host/db connection problem");
 
 $sql ="DELETE from AnimalLivesIn WHERE Animal_ID='$animalid'";
 

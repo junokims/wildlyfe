@@ -7,7 +7,7 @@ function OpenCon()
 <<<<<<< HEAD
 	$db = "wildlyfe";
 =======
-	$db = "Wildlyfe";
+	$db = "wildlyfe";
 >>>>>>> laura
 	$conn = new mysqli($dbhost, $dbuser,
 	$dbpass,$db) or die("Connect failed: %s\n".
