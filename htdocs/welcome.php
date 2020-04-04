@@ -87,10 +87,10 @@ max-width: 56em;
       <br></br>
         </div>
         <div class="grid">
-          <div class="module" onclick="location.href='http://www.example.com'" style="cursor:pointer;">View our Staff</div>
+          <div class="module" onclick="location.href='employeetable.php'" style="cursor:pointer;">View our Staff</div>
           <div class="module" onclick="location.href = 'visitorPage.php'" style="cursor:pointer;">View our Visitors</div>
-          <div class="module" onclick="location.href='http://www.example.com'" style="cursor:pointer;"> View our animals</div>
-          <div class="module" onclick="location.href='http://www.example.com'" style="cursor:pointer;">Look through our events</div>
+          <div class="module" onclick="location.href='animalpage.php'" style="cursor:pointer;"> View our animals</div>
+          <div class="module" onclick="location.href='eventstable.php'" style="cursor:pointer;">Look through our events</div>
         </div>
         <br></br>
 
