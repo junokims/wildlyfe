@@ -7,7 +7,7 @@ $name= $_POST['name'];
 
 $dbconnect = mysqli_connect('localhost', 'root', 'root', 'wildlyfe')or die("initial host/db connection problem");
 
-$sql = "UPDATE VisitorHasContactInformation SET Name = '$name' WHERE Visitor_ID='$visitorid'";
+$sql = "UPDATE visitorhascontactinformation SET name = '$name' WHERE visitor_id='$visitorid'";
 
 $run = mysqli_query($dbconnect, $sql);
 
@@ -23,7 +23,7 @@ $dob= $_POST['birthday'];
 
 $dbconnect = mysqli_connect('localhost', 'root', 'root', 'wildlyfe')or die("initial host/db connection problem");
 
-$sql = "UPDATE VisitorHasContactInformation SET DOB = '$dob' WHERE Visitor_ID='$visitorid'";
+$sql = "UPDATE visitorhascontactinformation SET dob = '$dob' WHERE visitor_id='$visitorid'";
 
 $run = mysqli_query($dbconnect, $sql);
 $_SESSION['message'] = "The visitor's information has been updated.";
@@ -37,7 +37,7 @@ $address = $_POST['address'];
 
 $dbconnect = mysqli_connect('localhost', 'root', 'root', 'wildlyfe')or die("initial host/db connection problem");
 
-$sql = "UPDATE VisitorHasContactInformation SET Address = '$address' WHERE Visitor_ID='$visitorid'";
+$sql = "UPDATE visitorhascontactinformation SET address = '$address' WHERE visitor_id='$visitorid'";
 
 $run = mysqli_query($dbconnect, $sql);
 $_SESSION['message'] = "The visitor's information has been updated.";
@@ -52,7 +52,7 @@ $email = $_POST['email'];
 
 $dbconnect = mysqli_connect('localhost', 'root', 'root', 'wildlyfe')or die("initial host/db connection problem");
 
-$sql = "UPDATE VisitorHasContactInformation SET Email = '$email' WHERE Visitor_ID='$visitorid'";
+$sql = "UPDATE visitorhascontactinformation SET email = '$email' WHERE visitor_id='$visitorid'";
 
 $run = mysqli_query($dbconnect, $sql);
 $_SESSION['message'] = "The visitor's information has been updated.";
@@ -67,7 +67,7 @@ $phonenumber = $_POST['phonenumber'];
 
 $dbconnect = mysqli_connect('localhost', 'root', 'root', 'wildlyfe')or die("initial host/db connection problem");
 
-$sql = "UPDATE VisitorHasContactInformation SET Phone_Number = '$phonenumber' WHERE Visitor_ID='$visitorid'";
+$sql = "UPDATE visitorhascontactinformation SET phone_number = '$phonenumber' WHERE visitor_id='$visitorid'";
 
 $run = mysqli_query($dbconnect, $sql);
 $_SESSION['message'] = "The visitor's information has been updated.";

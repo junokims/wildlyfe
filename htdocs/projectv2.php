@@ -182,12 +182,12 @@
       <form method = "post" action="projectv2-connect.php">
           <label for="field">Choose a field to project:</label>
               <select id="field" name="selected_field">
-                  <option value="Employee_Number">Employee_Number</option>
-                  <option value="Name">Name</option>
-                  <option value="DOB">DOB</option>
-                  <option value="SIN">SIN</option>
-                  <option value="Director_Number">Director_Number</option>
-                  <option value="Department_Number">Department_Number</option>
+                  <option value="employee_number">Employee_Number</option>
+                  <option value="name">Name</option>
+                  <option value="dob">DOB</option>
+                  <option value="sin">SIN</option>
+                  <option value="director_number">Director_Number</option>
+                  <option value="department_number">Department_Number</option>
 
               </select>
               <button type="submit" name="submit_form">Submit</button>      </form>

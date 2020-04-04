@@ -187,7 +187,7 @@
         <hr/>
         <div class="item">
           <p>Event ID</p>
-          <input type="text" name="Event_ID" placeholder="ID" />
+          <input type="text" name="event_id" placeholder="ID" />
         </div>
         <div class="item desired-outcome">
           <button type="submit" name="save" href="/">Send</button>

@@ -1,13 +1,13 @@
 <?php
 session_start();
 if (isset($_POST['save'])) {
-$id = $_POST['Event_ID'];
-$name = $_POST['Name_of_Event'];
-$time = $_POST['Time'];
-$date = $_POST['Event_date'];
-$loc = $_POST['Location'];
-$inv = $_POST['Number_of_Invitees'];
-$type = $_POST['Type'];
+$id = $_POST['event_id'];
+$name = $_POST['name_of_event'];
+$time = $_POST['time'];
+$date = $_POST['event_date'];
+$loc = $_POST['location'];
+$inv = $_POST['number_of_invitees'];
+$type = $_POST['type'];
 
 
 $dbconnect = mysqli_connect('localhost', 'root', 'root', 'wildlyfe')or die("initial host/db connection problem");

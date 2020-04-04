@@ -163,14 +163,14 @@ $conn = mysqli_connect("localhost", "root", "root", "wildlyfe");
 if ($conn->connect_error) {
 die("Connection failed: " . $conn->connect_error);
 }
-$sql = "SELECT * FROM Employee";
+$sql = "SELECT * FROM employee";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
 // output data of each row
 while($row = $result->fetch_assoc()) {
-echo "<tr><td>" . $row["Employee_Number"]. "</td><td>" . $row["Name"] . "</td><td>"
-. $row["DOB"]. "</td><td>" . $row["SIN"] . "</td><td>" . $row["Director_Number"] . 
-"</td><td>" . $row["Department_Number"] ."</td></tr>";
+echo "<tr><td>" . $row["employee_number"]. "</td><td>" . $row["name"] . "</td><td>"
+. $row["dob"]. "</td><td>" . $row["sin"] . "</td><td>" . $row["director_number"] . 
+"</td><td>" . $row["department_number"] ."</td></tr>";
 }
 echo "</table>";
 } else { echo "0 results"; }
@@ -223,7 +223,7 @@ $conn->close();
         <hr/>
         <div class="item">
           <p>Employee Number</p>
-          <input type="text" name="Employee_Number" placeholder="9999" />
+          <input type="text" name="employee_number" placeholder="9999" />
         </div>
         <div class="item desired-outcome">
           <button type="submit" name="save">Send</button>

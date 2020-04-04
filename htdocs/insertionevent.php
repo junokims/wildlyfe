@@ -187,15 +187,15 @@
         <hr/>
         <div class="item">
           <p>Event_ID</p>
-          <input type="text" name="Event_ID" placeholder="Event ID" />
+          <input type="text" name="event_id" placeholder="Event ID" />
         </div>
 		<div class="item">
           <p>Event Name</p>
-          <input type="text" name="Name_of_Event" placeholder="Event Name" />
+          <input type="text" name="name_of_event" placeholder="Event Name" />
         </div>
         <div class="item">
           <p>Time</p>
-             <select name="Time" >
+             <select name="time" >
               <option value="">Time</option>
               <option value="00:00">00:00</option>
               <option value="01:00">01:00</option>
@@ -226,21 +226,21 @@
 		
 		<div class="item">
 		<p>Date</p>
-			<label for="Event_date">Date:</label>
-			<input type="text" name="Event_date" placeholder="YYYY-MM-DD" />
+			<label for="event_date">Date:</label>
+			<input type="text" name="event_date" placeholder="YYYY-MM-DD" />
 		</div>
 		
 		<div class="item">
           <p>Location</p>
-          <input type="text" name="Location" placeholder="Location" />
+          <input type="text" name="location" placeholder="Location" />
         </div>
 		<div class="item">
           <p>Number of Invitees</p>
-          <input type="text" name="Number_of_Invitees" placeholder="Number of Invitees" />
+          <input type="text" name="number_of_invitees" placeholder="Number of Invitees" />
         </div>
         <div class="item">
           <p>Type</p>
-          <select name= "Type">
+          <select name= "type">
               <option value="Class">Class</option>
               <option value="Community Outreach">Community Outreach</option>
               <option value="Corporate Event">Corporate Event</option>

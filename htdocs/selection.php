@@ -176,7 +176,7 @@
         <hr/>
         <div class="item">
           <p>Employee Number</p>
-          <input type="text" name="Employee_Number" placeholder="9999" />
+          <input type="text" name="employee_number" placeholder="9999" />
         </div>
         <div class="item desired-outcome">
           <button type="submit" name="save">Send</button>

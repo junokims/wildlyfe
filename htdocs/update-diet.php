@@ -10,14 +10,14 @@ if (isset($_POST['update2'])) {
 $visitorid = $_POST['visitor_id'];
 $name= $_POST['name'];
 
-$res = mysqli_query($conn, "SELECT COUNT(`Visitor_ID`) c  FROM VisitorHasContactInformation WHERE `Visitor_ID`='$visitorid'");
+$res = mysqli_query($conn, "SELECT COUNT(`visitor_id`) c  FROM visitorhascontactinformation WHERE `visitor_id`='$visitorid'");
 $row = mysqli_fetch_assoc($res);
 $C = $row['c'];
 if ($C==1 && strlen($name) <= 30 && !(preg_match('([a-zA-Z].*[0-9]|[0-9].*[a-zA-Z])', $name))){
-$sql = "UPDATE VisitorHasContactInformation SET Name = '$name' WHERE Visitor_ID='$visitorid'";
+$sql = "UPDATE visitorhascontactinformation SET name = '$name' WHERE visitor_id='$visitorid'";
 $run = mysqli_query($conn, $sql);
                 
-    $msg= "<p style='text-align:center'> Name for $visitorid  has been updated!</p>";
+    $msg= "<p style='text-align:center'> name for $visitorid  has been updated!</p>";
 }  else
 {
   $msg="<p style=';color:#545454;text-align:center'> We found an error while submitting your form, please check the details again</p>";
@@ -28,11 +28,11 @@ if (isset($_POST['update3'])) {
 $visitorid = $_POST['visitor_id'];
 $dob= $_POST['birthday'];
 
-$res = mysqli_query($conn, "SELECT COUNT(`Visitor_ID`) c  FROM VisitorHasContactInformation WHERE `Visitor_ID`='$visitorid'");
+$res = mysqli_query($conn, "SELECT COUNT(`visitor_id`) c  FROM visitorhascontactinformation WHERE `visitor_id`='$visitorid'");
 $row = mysqli_fetch_assoc($res);
 $C = $row['c'];
 if ($C==1 && !(preg_match( '~[a-z]~', $dob))) {
-$sql = "UPDATE VisitorHasContactInformation SET DOB = '$dob' WHERE Visitor_ID='$visitorid'";
+$sql = "UPDATE visitorhascontactinformation SET dob = '$dob' WHERE visitor_id='$visitorid'";
 $run = mysqli_query($conn, $sql);
     $msg= "<p style='text-align:center'> Date of birth for $visitorid has been updated!</p>";
 } else
@@ -47,11 +47,11 @@ $visitorid = $_POST['visitor_id'];
 $address = $_POST['address'];
 
 
-$res = mysqli_query($conn, "SELECT COUNT(`Visitor_ID`) c  FROM VisitorHasContactInformation WHERE `Visitor_ID`='$visitorid'");
+$res = mysqli_query($conn, "SELECT COUNT(`visitor_id`) c  FROM visitorhascontactinformation WHERE `visitor_id`='$visitorid'");
 $row = mysqli_fetch_assoc($res);
 $C = $row['c'];
 if ($C==1 && strlen($address) <= 40) {
-$sql = "UPDATE VisitorHasContactInformation SET Address = '$address' WHERE Visitor_ID='$visitorid'";
+$sql = "UPDATE visitorhascontactinformation SET address = '$address' WHERE visitor_id='$visitorid'";
 $run = mysqli_query($conn, $sql);
     $msg= "<p style='text-align:center'> The address for $visitorid has been updated!</p>";
 } else 
@@ -65,11 +65,11 @@ if (isset($_POST['update5'])) {
 $visitorid = $_POST['visitor_id'];
 $email = $_POST['email'];
 
-$res = mysqli_query($conn, "SELECT COUNT(`Visitor_ID`) c  FROM VisitorHasContactInformation WHERE `Visitor_ID`='$visitorid'");
+$res = mysqli_query($conn, "SELECT COUNT(`visitor_id`) c  FROM visitorhascontactinformation WHERE `visitor_id`='$visitorid'");
 $row = mysqli_fetch_assoc($res);
 $C = $row['c'];
 if ($C==1 && strlen($email) <= 40) {
-$sql = "UPDATE VisitorHasContactInformation SET Email = '$email' WHERE Visitor_ID='$visitorid'";
+$sql = "UPDATE visitorhascontactinformation SET email = '$email' WHERE visitor_id='$visitorid'";
 $run = mysqli_query($conn, $sql);
     $msg="<p style='text-align:center'> $visitorid has been updated!</p>";
 } else  
@@ -83,11 +83,11 @@ if (isset($_POST['update6'])) {
 $visitorid = $_POST['visitor_id'];
 $phonenumber = $_POST['phonenumber'];
 
-$res = mysqli_query($conn, "SELECT COUNT(`Visitor_ID`) c  FROM VisitorHasContactInformation WHERE `Visitor_ID`='$visitorid'");
+$res = mysqli_query($conn, "SELECT COUNT(`visitor_id`) c  FROM visitorhascontactinformation WHERE `visitor_id`='$visitorid'");
 $row = mysqli_fetch_assoc($res);
 $C = $row['c'];
 if ($C==1 && strlen($phonenumber)==12 &&  !(preg_match( '~[a-z]~', $phonenumber))) {
-$sql = "UPDATE VisitorHasContactInformation SET Phone_Number = '$phonenumber' WHERE Visitor_ID='$visitorid'";
+$sql = "UPDATE visitorhascontactinformation SET phone_number = '$phonenumber' WHERE visitor_id='$visitorid'";
 $run = mysqli_query($conn, $sql);
     $msg="<p style='text-align:center'> $visitorid has been updated!</p>";
 } else  
@@ -291,13 +291,13 @@ $run = mysqli_query($conn, $sql);
         <br>
         </br>
         <div class="input-group">
-          <p>Name</p>
-          <input type="text" name="name" placeholder="Name"  />
+          <p>name</p>
+          <input type="text" name="name" placeholder="name"  />
           <button type="save" name='update2'>Update</button>
  </div>
         <div class="input-group">
           <p>Date of Birth</p>
-          <input type="text" name="birthday" placeholder="Dob"/>
+          <input type="text" name="birthday" placeholder="dob"/>
           <button type="save" name='update3'>Update</button>
         </div>
         <div class="item-group">

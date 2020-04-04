@@ -8,10 +8,10 @@ $data = ob_get_clean();
 $conn = OpenCon();
 if (isset($_POST['save'])) {
   $animalid = $_POST['animal_id'];
-  $enclosureid = $_POST['EnclosureID'];
-  $species = $_POST['Species'];
+  $enclosureid = $_POST['enclosure_id'];
+  $species = $_POST['species'];
   $msg = '';
-$sql ="INSERT into AnimalLivesIn (Animal_ID, Enclosure_ID, Species)  VALUES ('$animalid', '$enclosureid', '$species')";
+$sql ="INSERT into animallivesin (animal_id, enclosure_id, species)  VALUES ('$animalid', '$enclosureid', '$species')";
                 if(mysqli_query($conn,$sql)){
                    $msg =  "<p style= 'text-align:center'> $animalid has been added! they'll love it here!</p>";                   
                 }else{
@@ -196,7 +196,7 @@ $sql ="INSERT into AnimalLivesIn (Animal_ID, Enclosure_ID, Species)  VALUES ('$a
         </div>
         <div class="item">
           <p>Enclosure ID</p>
-             <select name="EnclosureID" >
+             <select name="enclosure_id" >
               <option value="">Enclosure ID</option>
               <option value="Hedgehog Enclosure">Hedgehog Enclosure</option>
               <option value="Lizard Enclosure">Lizard Enclosure</option>
@@ -207,7 +207,7 @@ $sql ="INSERT into AnimalLivesIn (Animal_ID, Enclosure_ID, Species)  VALUES ('$a
         </div>
         <div class="item">
           <p>Species</p>
-          <select name= "Species">
+          <select name= "species">
               <option value="">Species</option>
               <option value="Hedgehog">Hedgehog</option>
               <option value="Lizard">Lizard</option>

@@ -171,13 +171,13 @@ $conn = mysqli_connect("localhost", "root", "root", "wildlyfe");
 if ($conn->connect_error) {
 die("Connection failed: " . $conn->connect_error);
 }
-$sql = "SELECT * FROM AnimalLivesIn";
+$sql = "SELECT * FROM animallivesin";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
 // output data of each row
 while($row = $result->fetch_assoc()) {
-echo "<tr><td>" . $row["Animal_ID"]. "</td><td>" . $row["Enclosure_ID"] . "</td><td>"
-. $row["Species"]. "</td></tr>";
+echo "<tr><td>" . $row["animal_id"]. "</td><td>" . $row["enclosure_id"] . "</td><td>"
+. $row["species"]. "</td></tr>";
 }
 echo "</table>";
 } else { echo "0 results"; }
@@ -206,7 +206,7 @@ $conn->close();
   <h2> What do we feed our animals? </h2>
   <p> That's a great question, select the Species name  in the textbox below and find out! </p>
   
-  <select name= "Species">
+  <select name= "species">
     <option value="">Species</option>
     <option value="Hedgehog">Hedgehog</option>
     <option value="Lizard">Lizard</option>

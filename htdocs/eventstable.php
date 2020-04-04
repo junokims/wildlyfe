@@ -158,14 +158,14 @@ $conn = mysqli_connect("localhost", "root", "root", "wildlyfe");
 if ($conn->connect_error) {
 die("Connection failed: " . $conn->connect_error);
 }
-$sql = "SELECT * FROM Events";
+$sql = "SELECT * FROM events";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
 // output data of each row
 while($row = $result->fetch_assoc()) {
-echo "<tr><td>" . $row["Event_ID"]. "</td><td>" . $row["Name_of_Event"] . "</td><td>"
-. $row["Time"]. "</td><td>" . $row["Event_date"] . "</td><td>" . $row["Location"] . 
-"</td><td>" . $row["Number_of_Invitees"] ."</td><td>" . $row["Type"] ."</td></tr>";
+echo "<tr><td>" . $row["event_id"]. "</td><td>" . $row["name_of_event"] . "</td><td>"
+. $row["time"]. "</td><td>" . $row["event_date"] . "</td><td>" . $row["location"] . 
+"</td><td>" . $row["number_of_invitees"] ."</td><td>" . $row["type"] ."</td></tr>";
 }
 echo "</table>";
 } else { echo "0 results"; }
@@ -208,8 +208,8 @@ $conn->close();
 $conn = OpenCon();
 if (isset($_POST['check'])) {
 
-$sql = "SELECT Count(DISTINCT Event_ID) AS TotalEvents
-FROM Events";$result = $conn->query($sql);
+$sql = "SELECT Count(DISTINCT event_id) AS TotalEvents
+FROM events";$result = $conn->query($sql);
 if ($result->num_rows > 0) {
 echo "<table><tr><th class='border-
 class'>Total Events</th></tr>";
@@ -251,9 +251,8 @@ class'>Total Events</th></tr>";
 $conn = OpenCon();
 if (isset($_POST['save'])) {
 
-//SELECT AVG(Counts.count_items_purchased) FROM (SELECT COUNT(*) AS count_items_purchased FROM Purchase GROUP BY cust_id) AS Counts
 
-$sql = "SELECT AVG(av_events.events_per_cat) FROM (SELECT COUNT(*) AS events_per_cat FROM Events GROUP BY Type) AS av_events";$result = $conn->query($sql);
+$sql = "SELECT AVG(av_events.events_per_cat) FROM (SELECT COUNT(*) AS events_per_cat FROM events GROUP BY type) AS av_events";$result = $conn->query($sql);
 if ($result->num_rows > 0) {
 echo "<table><tr><th class='border-
 class'>Average</th></tr>";

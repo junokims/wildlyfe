@@ -8,12 +8,12 @@ $conn = OpenCon();
 if (isset($_POST['save'])) {
 $animalid = $_POST['animal_id'];
 $msg ='';
-$res = mysqli_query($conn, "SELECT COUNT(`Animal_ID`) c  FROM AnimalLivesIn WHERE `Animal_ID`='$animalid'");
+$res = mysqli_query($conn, "SELECT COUNT(`animal_id`) c  FROM animallivesin WHERE `animal_id`='$animalid'");
 $row = mysqli_fetch_assoc($res);
 $C = $row['c'];
 if ($C==1)
 {
-  $sql ="DELETE from AnimalLivesIn WHERE Animal_ID='$animalid'";
+  $sql ="DELETE from animallivesin WHERE animal_id='$animalid'";
   $run = mysqli_query($conn, $sql);
   $msg= "<p style=';color:#545454;;text-align:center'> $animalid has been deleted!</p>";
 }
