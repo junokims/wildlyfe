@@ -154,7 +154,9 @@ vartical-align: middle;
 </head>
 <body>
 <div class = "container">
- <img src="pet.png" align="center"  width="51" height="51">
+<a href="welcome.php">
+  <img src="pet.png" align="center"  width="51" height="51">
+</a>
 <table align="center" width= "1000" >
 <h1> Here are all of our visitors! </h1>
 <p>You can sell this information to make more money! </p>

@@ -151,6 +151,9 @@ vartical-align: middle;
 </style>
 </head>
 <div class = "container">
+<a href="welcome.php">
+  <img src="pet.png" align="center"  width="51" height="51">
+</a>
 <table align="center" width= "1000" >
 <h1> View our animals and their enclosure below! </h1>
 <p> As you'll notice, we have a knack for naming our animals non-traditional names, it's part of our charm..</p>

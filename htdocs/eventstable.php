@@ -9,7 +9,7 @@ html {
 }
 
 body {
-background-image: url("wildlife8.png");
+background-image: url("wildlife8.PNG");
 border-collapse: collapse;
 width: 80%%;
 color: #666;
@@ -136,6 +136,9 @@ vartical-align: middle;
 </head>
 <body>
 <div class = "container">
+<a href="welcome.php">
+  <img src="pet.png" align="center"  width="51" height="51">
+</a>
 <table align="center" width= "1000" >
 <h1> Current Events </h1>
 <p> Check Out Our Events! </p> 
@@ -155,7 +158,7 @@ $conn = mysqli_connect("localhost", "root", "root", "wildlyfe");
 if ($conn->connect_error) {
 die("Connection failed: " . $conn->connect_error);
 }
-$sql = "SELECT * FROM events";
+$sql = "SELECT * FROM Events";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
 // output data of each row
@@ -206,7 +209,7 @@ $conn = OpenCon();
 if (isset($_POST['check'])) {
 
 $sql = "SELECT Count(DISTINCT Event_ID) AS TotalEvents
-FROM events";$result = $conn->query($sql);
+FROM Events";$result = $conn->query($sql);
 if ($result->num_rows > 0) {
 echo "<table><tr><th class='border-
 class'>Total Events</th></tr>";
@@ -250,7 +253,7 @@ if (isset($_POST['save'])) {
 
 //SELECT AVG(Counts.count_items_purchased) FROM (SELECT COUNT(*) AS count_items_purchased FROM Purchase GROUP BY cust_id) AS Counts
 
-$sql = "SELECT AVG(av_events.events_per_cat) FROM (SELECT COUNT(*) AS events_per_cat FROM events GROUP BY Type) AS av_events";$result = $conn->query($sql);
+$sql = "SELECT AVG(av_events.events_per_cat) FROM (SELECT COUNT(*) AS events_per_cat FROM Events GROUP BY Type) AS av_events";$result = $conn->query($sql);
 if ($result->num_rows > 0) {
 echo "<table><tr><th class='border-
 class'>Average</th></tr>";

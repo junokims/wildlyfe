@@ -140,7 +140,11 @@ color: white;
 </style>
 </head>
 <body>
+
 <div class = "container">
+<a href="welcome.php">
+  <img src="pet.png" align="center"  width="51" height="51">
+</a>
 <table align = "center">
 <h1> Employee Information </h1>
 <p> Unfortunately, you do not have permission to edit or delete employees without HR approval! However, for your own reference, Department #1 is our office, Department #2 is outdoors, Department #3 is our ticketing, events, and entry staff, and Department #5-6 are seasonal employees that assist everyone else! </p> 
