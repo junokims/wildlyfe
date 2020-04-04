@@ -12,8 +12,7 @@ if (isset($_POST['save'])) {
   $species = $_POST['Species'];
   $msg = '';
 $sql ="INSERT into AnimalLivesIn (Animal_ID, Enclosure_ID, Species)  VALUES ('$animalid', '$enclosureid', '$species')";
-                if(mysqli_
-                   ($conn,$sql)){
+                if(mysqli_query($conn,$sql)){
                    $msg =  "<p style= 'text-align:center'> $animalid has been added! they'll love it here!</p>";                   
                 }else{
                    if(mysqli_errno($conn) == 1062)
