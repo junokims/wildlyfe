@@ -96,17 +96,7 @@ $run = mysqli_query($conn, $sql);
 }
 
 }
-
-if (isset($_POST['update7'])) {
-  $visitorid2 = $_POST['visitor_id2'];
-  $eventid = $_POST['event'];
-  $sql = "INSERT into Attends(Visitor_ID, Event_ID) VALUES ('$visitorid2', '$eventid')";
-  $run = mysqli_query($conn, $sql);
-  $msg="<p style='text-align:center'> Event with ID #$eventid has been updated with $visitorid2 now attending!</p>";
-
-}
 ?>
-
 <html>
   <head>
     <title>Simple Complaint Form</title>
@@ -292,10 +282,14 @@ if (isset($_POST['update7'])) {
         <p>Find below our current registered visitors. If you would like to update any information
           fill the form below our table by entering the ID you would like to update</p>
         <hr/>
+        <br>
+        </br>
         <div class="input-group">
           <p><strong>Enter the ID of the visitor you want to update</strong></p>
           <input type="number" name="visitor_id" placeholder="0" />
         </div>
+        <br>
+        </br>
         <div class="input-group">
           <p>Name</p>
           <input type="text" name="name" placeholder="Name"  />
@@ -328,29 +322,6 @@ if (isset($_POST['update7'])) {
  </form>
  </div>
 </div>
-<div class="testbox">
-      <form method="post">
-        <h1>Add Visitor to an Event</h1>
-        <p>Select the Visitor ID of the attendee, and the Event ID you would like to add to</p>
-        <hr/>
-        <div class="input-group">
-          <p><strong>Enter the ID of the visitor you want to update</strong></p>
-          <input type="number" name="visitor_id2" placeholder="0" />
-        </div>
-        <div class="input-group">
-          <p>Event ID</p>
-          <input type="text" name="event" placeholder="Event ID"  />
-          <button type="save" name='update7'>Update</button>
-        </div>
-
-   <?php
-    if (isset($msg)) {
-        echo "<div>" . $msg . "</div>";
-    }
-    ?>     
- </form>
- </div>
-
 	<div class = "testbox">
 	<form action="visitorPage.php" method="post">
 	<h1>Back to Visitors</h1>
