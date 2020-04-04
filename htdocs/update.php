@@ -6,6 +6,7 @@ var_dump($myVar);
 $data = ob_get_clean();
 $conn = OpenCon();
 $msg = '';
+$msg2 ='';
 if (isset($_POST['update2'])) {
 $visitorid = $_POST['visitor_id'];
 $name= $_POST['name'];
@@ -102,7 +103,7 @@ if (isset($_POST['update7'])) {
   $eventid = $_POST['event'];
   $sql = "INSERT into attends(visitor_id, event_id) VALUES ('$visitorid2', '$eventid')";
   $run = mysqli_query($conn, $sql);
-  $msg="<p style='text-align:center'> Event with ID #$eventid has been updated with $visitorid2 now attending!</p>";
+  $msg2="<p style='text-align:center'> Event with ID #$eventid has been updated with $visitorid2 now attending!</p>";
 
 }
 ?>
@@ -345,7 +346,7 @@ if (isset($_POST['update7'])) {
 
    <?php
     if (isset($msg)) {
-        echo "<div>" . $msg . "</div>";
+        echo "<div>" . $msg2 . "</div>";
     }
     ?>     
  </form>
