@@ -197,11 +197,20 @@ $conn->close();
 <form action="join-connect.php"  method="post">
 <h1> Fun Educational Content Below! </h1>
 <h2> What do we feed our animals? </h2>
-<p> That's a great question, enter the animal ID in the textbox below and find out! </p>
-<input  class="street-item" type="text" name="animal_id" placeholder="Species" />
-<button type="submit" name="check">Check</button>
-<br> </br>
+<p> That's a great question, select the Species name  in the textbox below and find out! </p>
+          <select name= "Species">
+              <option value="">Species</option>
+              <option value="Hedgehog">Hedgehog</option>
+              <option value="Lizard">Lizard</option>
+              <option value="Monkey">Monkey</option>
+              <option value="Snake">Snake</option>
+              <option value="Wolf">Wolf</option>
+            </select>
+        <div class="item desired-outcome">
+          <button type="submit" name="save">Send</button>
+        
 </form>
+</div>
  </div>
 </body>
 </html>

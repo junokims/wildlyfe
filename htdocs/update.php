@@ -1,16 +1,124 @@
+<?php  include('connect.php'); ?>
 <!DOCTYPE html>
+<?php
+ob_start();
+var_dump($myVar);
+$data = ob_get_clean();
+$conn = OpenCon();
+$msg = '';
+if (isset($_POST['update2'])) {
+$visitorid = $_POST['visitor_id'];
+$name= $_POST['name'];
+
+$res = mysqli_query($conn, "SELECT COUNT(`Visitor_ID`) c  FROM VisitorHasContactInformation WHERE `Visitor_ID`='$visitorid'");
+$row = mysqli_fetch_assoc($res);
+$C = $row['c'];
+if ($C==1 && strlen($name) <= 30 && !(preg_match('([a-zA-Z].*[0-9]|[0-9].*[a-zA-Z])', $name))){
+$sql = "UPDATE VisitorHasContactInformation SET Name = '$name' WHERE Visitor_ID='$visitorid'";
+$run = mysqli_query($conn, $sql);
+                
+    $msg= "<p style='text-align:center'> Name for $visitorid  has been updated!</p>";
+}  else
+{
+  $msg="<p style=';color:#545454;text-align:center'> We found an error while submitting your form, please check the details again</p>";
+}
+}
+
+if (isset($_POST['update3'])) {
+$visitorid = $_POST['visitor_id'];
+$dob= $_POST['birthday'];
+
+$res = mysqli_query($conn, "SELECT COUNT(`Visitor_ID`) c  FROM VisitorHasContactInformation WHERE `Visitor_ID`='$visitorid'");
+$row = mysqli_fetch_assoc($res);
+$C = $row['c'];
+if ($C==1 && !(preg_match( '~[a-z]~', $dob))) {
+$sql = "UPDATE VisitorHasContactInformation SET DOB = '$dob' WHERE Visitor_ID='$visitorid'";
+$run = mysqli_query($conn, $sql);
+    $msg= "<p style='text-align:center'> Date of birth for $visitorid has been updated!</p>";
+} else
+{
+  $msg= "<p style='text-align:center'> We found an error while submitting your form, please check the details again</p>";
+}
+
+}
+
+if (isset($_POST['update4'])) {
+$visitorid = $_POST['visitor_id'];
+$address = $_POST['address'];
+
+
+$res = mysqli_query($conn, "SELECT COUNT(`Visitor_ID`) c  FROM VisitorHasContactInformation WHERE `Visitor_ID`='$visitorid'");
+$row = mysqli_fetch_assoc($res);
+$C = $row['c'];
+if ($C==1 && strlen($address) <= 40) {
+$sql = "UPDATE VisitorHasContactInformation SET Address = '$address' WHERE Visitor_ID='$visitorid'";
+$run = mysqli_query($conn, $sql);
+    $msg= "<p style='text-align:center'> The address for $visitorid has been updated!</p>";
+} else 
+{
+  $msg= "<p style='text-align:center'>We found an error while submitting your form, please check the details again</p>";
+}
+
+}
+
+if (isset($_POST['update5'])) {
+$visitorid = $_POST['visitor_id'];
+$email = $_POST['email'];
+
+$res = mysqli_query($conn, "SELECT COUNT(`Visitor_ID`) c  FROM VisitorHasContactInformation WHERE `Visitor_ID`='$visitorid'");
+$row = mysqli_fetch_assoc($res);
+$C = $row['c'];
+if ($C==1 && strlen($email) <= 40) {
+$sql = "UPDATE VisitorHasContactInformation SET Email = '$email' WHERE Visitor_ID='$visitorid'";
+$run = mysqli_query($conn, $sql);
+    $msg="<p style='text-align:center'> $visitorid has been updated!</p>";
+} else  
+{
+  $msg= "<p style='text-align:center'> We found an error while submitting your form, please check the details again</p>";
+}
+
+}
+
+if (isset($_POST['update6'])) {
+$visitorid = $_POST['visitor_id'];
+$phonenumber = $_POST['phonenumber'];
+
+$res = mysqli_query($conn, "SELECT COUNT(`Visitor_ID`) c  FROM VisitorHasContactInformation WHERE `Visitor_ID`='$visitorid'");
+$row = mysqli_fetch_assoc($res);
+$C = $row['c'];
+if ($C==1 && strlen($phonenumber)==12 &&  !(preg_match( '~[a-z]~', $phonenumber))) {
+$sql = "UPDATE VisitorHasContactInformation SET Phone_Number = '$phonenumber' WHERE Visitor_ID='$visitorid'";
+$run = mysqli_query($conn, $sql);
+    $msg="<p style='text-align:center'> $visitorid has been updated!</p>";
+} else  
+{
+  $msg="<p style='text-align:center'> We found an error while submitting your form, please check the details again</h1>";
+}
+
+}
+?>
 <html>
   <head>
     <title>Simple Complaint Form</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <style>
+<style>
       html, body {
       min-height: 100%;
       }
-      body, div, form, input, select, p {
-      padding: 0;
-      margin: 0;
+      body {
+       background-image: url("wildlife8.PNG");
+      padding: 100;
+      margin: 20000;
+      outline: none;
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 14px;
+      color: #666;
+      line-height: 22px;
+      }
+	  div, form, input, select, p {
+      padding: 100;
+      margin: 20000;
       outline: none;
       font-family: Roboto, Arial, sans-serif;
       font-size: 14px;
@@ -63,7 +171,6 @@
       display: flex;
       flex-direction: column;
       margin: 10px 0;
-      margin-right: 10px
       }
       input[type="date"]::-webkit-inner-spin-button {
       display: none;
@@ -170,7 +277,7 @@
        </div>
      <?php endif ?>
     <div class="testbox">
-      <form action="connect-update.php" method="post">
+      <form method="post">
         <h1>View or Edit Visitor Details</h1>
         <p>Find below our current registered visitors. If you would like to update any information
           fill the form below our table by entering the ID you would like to update</p>
@@ -187,7 +294,7 @@
           <p>Name</p>
           <input type="text" name="name" placeholder="Name"  />
           <button type="save" name='update2'>Update</button>
-        </div>
+ </div>
         <div class="input-group">
           <p>Date of Birth</p>
           <input type="text" name="birthday" placeholder="Dob"/>
@@ -207,7 +314,22 @@
           <p>Phone number</p>
           <input type="text" name="phonenumber" placeholder="111-111-1111"/>
           <button type="save" name='update6'>Update</button>
+   <?php
+    if (isset($msg)) {
+        echo "<div>" . $msg . "</div>";
+    }
+    ?>>     
+ </form>
+ </div>
+</div>
+	<div class = "testbox">
+	<form action="visitorPage.php" method="post">
+	<h1>Back to Visitors</h1>
+        <p>Return to the visitor page..</p>
+		<div class="item desired-outcome">
+          <button type="submit" name="save">Back</button>
+        </div>
       </form>
-    </div>
+	  </div>
   </body>
 </html>

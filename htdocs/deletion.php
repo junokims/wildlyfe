@@ -1,5 +1,29 @@
 <?php  include('connect.php'); ?>
 <!DOCTYPE html>
+<?php
+ob_start();
+var_dump($myVar);
+$data = ob_get_clean();
+$conn = OpenCon();
+if (isset($_POST['save'])) {
+$animalid = $_POST['animal_id'];
+$msg ='';
+$res = mysqli_query($conn, "SELECT COUNT(`Animal_ID`) c  FROM AnimalLivesIn WHERE `Animal_ID`='$animalid'");
+$row = mysqli_fetch_assoc($res);
+$C = $row['c'];
+if ($C==1)
+{
+  $sql ="DELETE from AnimalLivesIn WHERE Animal_ID='$animalid'";
+  $run = mysqli_query($conn, $sql);
+  $msg= "<p style=';color:#545454;;text-align:center'> $animalid has been deleted!</p>";
+}
+else
+{
+  $msg= "<p style=';color:#545454;;text-align:center'> Looks like $animalid isn't in our system. Please try again.!</p>";
+}
+}
+?>
+<!DOCTYPE html>
 <html>
   <head>
     <title>Add a new animal</title>
@@ -180,7 +204,7 @@ html, body {
 	</div>
 <?php endif ?>
     <div class="testbox">
-      <form action="connect-delete.php" method="post">
+      <form  method="post">
         <h1>Delete an animal!</h1>
         <p>Enter the ID of the animal you would like to delete below.</p>
         <hr/>
@@ -189,7 +213,12 @@ html, body {
           <input type="text" name="animal_id" placeholder="Animal ID" />
         </div>
         <div class="item desired-outcome">
-          <button type="submit" name="save" href="/">Send</button>
+          <button type="submit" name="save" >Send</button
+<?php
+    if (isset($msg)) {
+        echo "<div>" . $msg . "</div>";
+    }
+    ?>>
         </div>   
   </form>
     </div>
@@ -199,7 +228,7 @@ html, body {
         <p>Return to the animal page.</p>
 		<div class="item desired-outcome">
           <button type="submit" name="save">Back</button>
-        </div>
+	</div>
       </form>
 </div>
   </body>

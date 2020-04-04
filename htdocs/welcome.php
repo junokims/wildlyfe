@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>W  elcome to Wildlyfe! Our trusty directory and database</title>
+    <title>Welcome to Wildlyfe! Our trusty directory and database</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <style>
@@ -16,9 +16,24 @@
     }
 
     body {
-  margin: 0 auto;
-  max-width: 56em;
-  padding: 1em 0;
+background-image: url("wildlife8.PNG");
+border-collapse: collapse;
+width: 80%;
+color: #666;
+font-family: Roboto, Arial, sans-serif;
+font-size: 20px;
+text-align: left;
+padding: 1em 0;
+margin: 0 auto;
+max-width: 56em;
+
+}
+
+.container {
+  padding: 0 16px;
+  background-color: white;
+  border-radius: 25px;
+  border: 1px solid #AED6F1;
 }
 
 .grid {
@@ -56,22 +71,28 @@
     </style>
   </head>
   <body>
+    <div class = "container">
+    <img src="pet.png" align="center"  width="51" height="51">
+    <br></br>
+
     <div class="testbox">
         <h1>Welcome to Wildlyfe! Our trusty directory and database</h1>
         <br>
       </br>
-      <p>View our options below and select according to what you're looking for. Contact
-      our team at any moment by dialing 1800-wild-lyyfe</p>
+      <p>View our options below and select according to what you're looking for.</p> 
+      <p>Contact our team at any moment by dialing 1800-wild-lyyfe</p>
       <br>
     </br>
         </div>
         <div class="grid">
-          <div class="module">View our Staff</div>
-          <div class="module">View our Visitors</div>
-          <div class="module">View our animals</div>
-          <div class="module">Look through our events</div>
+          <div class="module" onclick="location.href='http://www.example.com'" style="cursor:pointer;">View our Staff</div>
+          <div class="module" onclick="location.href = 'visitorPage.php'" style="cursor:pointer;">View our Visitors</div>
+          <div class="module" onclick="location.href='http://www.example.com'" style="cursor:pointer;"> View our animals</div>
+          <div class="module" onclick="location.href='http://www.example.com'" style="cursor:pointer;">Look through our events</div>
         </div>
+        <br></br>
 
     </div>
+  </div>
   </body>
 </html>

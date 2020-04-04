@@ -1,8 +1,8 @@
   
 <?php
 include 'animalpage.php';
-if (isset($_POST['check'])) {
-$animalid = $_POST['animal_id'];
+if (isset($_POST['save'])) {
+$animalid = $_POST['Species'];
 $dbconnect = mysqli_connect('localhost', 'root', 'root', 'Wildlyfe')or die("initial host/db connection problem");
 $sql = "SELECT Food_Item_ID FROM Eats e, AnimalLivesIn ali WHERE ali.Animal_ID=e.Animal_ID AND ali.Species= '$animalid'";
 $result = mysqli_query($dbconnect, $sql)or die(mysqli_error($dbconnect));
