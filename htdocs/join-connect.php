@@ -12,18 +12,16 @@ if (isset($_POST['check'])) {
     $result = mysqli_query($dbconnect,$sql);
     if ($result->num_rows > 0) {
     echo "<table>";
-    echo "<br></br>";
-    echo "<tr><th>We feed our $animalid </th></tr>";
+    echo "<tr><th class='border-class'>We feed our $animalid </th></tr>";
     while($row = mysqli_fetch_array($result)) {
         $name = $row['Food_Item_ID'];
-        echo "<tr><td style='width: 100px;'>".$name."</td></tr>";
+        echo "<tr><td class='border-class'>".$name."</td></tr>";
     } 
     echo "</table>";
     } else{
         echo "0 results; did you enter a species we have in our society?";
     }
     echo "<br></br>";
-    echo '<a href="animalpage.php">Enter another species!</a>';
     mysqli_close($dbconnect);
 }
 ?>

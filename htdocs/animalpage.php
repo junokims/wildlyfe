@@ -150,21 +150,21 @@ vartical-align: middle;
 }
 </style>
 </head>
-<div class = "container">
-<a href="welcome.php">
-  <img src="pet.png" align="center"  width="51" height="51">
-</a>
-<table align="center" width= "1000" >
-<h1> View our animals and their enclosure below! </h1>
-<p> As you'll notice, we have a knack for naming our animals non-traditional names, it's part of our charm..</p>
-<p> Below, you'll find you can add a new animal to our facilities, or delete one as needed! Unfortunately you'll be unable to edit any details as of now as you require caretake approval to do so. </p>
-<br> </br>
-<tr>
-<th>Animal ID</th>
-<th>Enclosure ID</th>
-<th>Species</th>
-</tr>
-</div>
+  <div class = "container">
+    <a href="welcome.php">
+      <img src="pet.png" align="center"  width="51" height="51">
+    </a>
+    <table align="center" >
+    <h1> View our animals and their enclosure below! </h1>
+    <p> As you'll notice, we have a knack for naming our animals non-traditional names, it's part of our charm..</p>
+    <p> Below, you'll find you can add a new animal to our facilities, or delete one as needed! Unfortunately you'll be unable to edit any details as of now as you require caretake approval to do so. </p>
+    <br> </br>
+    <tr>
+    <th>Animal ID</th>
+    <th>Enclosure ID</th>
+    <th>Species</th>
+    </tr>
+  </div>
 <?php
 $conn = mysqli_connect("localhost", "root", "root", "wildlyfe");
 // Check connection
@@ -183,9 +183,11 @@ echo "</table>";
 } else { echo "0 results"; }
 $conn->close();
 ?>
-<br>
-</br>
+
+<br></br>
 </table>
+
+
 <div class="button-container">
 	<form action="insertion.php">
           <button type="submit" name="add an animal">Add an animal</button>
@@ -196,24 +198,28 @@ $conn->close();
 	</form>
 </div>
 <br> </br>
+
+
   <div class="testbox">
 <form action="join-connect.php"  method="post">
-<h1> Fun Educational Content Below! </h1>
-<h2> What do we feed our animals? </h2>
-<p> That's a great question, select the Species name  in the textbox below and find out! </p>
-          <select name= "Species">
-              <option value="">Species</option>
-              <option value="Hedgehog">Hedgehog</option>
-              <option value="Lizard">Lizard</option>
-              <option value="Monkey">Monkey</option>
-              <option value="Snake">Snake</option>
-              <option value="Wolf">Wolf</option>
-            </select>
-        <div class="item desired-outcome">
-          <button type="submit" name="check">Send</button>
-        
+  <h1> Fun Educational Content Below! </h1>
+  <h2> What do we feed our animals? </h2>
+  <p> That's a great question, select the Species name  in the textbox below and find out! </p>
+  
+  <select name= "Species">
+    <option value="">Species</option>
+    <option value="Hedgehog">Hedgehog</option>
+    <option value="Lizard">Lizard</option>
+    <option value="Monkey">Monkey</option>
+    <option value="Snake">Snake</option>
+    <option value="Wolf">Wolf</option>
+  </select>
+  <div class="item desired-outcome">
+    <button type="submit" name="check">Send</button>
+      <br></br>       
+  </div>
 </form>
-</div>
+  
  </div>
 </body>
 </html>
