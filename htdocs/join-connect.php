@@ -1,8 +1,15 @@
- 
+
+// <!-- <?php -->
+// include 'animalpage.php';
+// if (isset($_POST['check'])) {
+//     $animalid = $_POST['animal_id'];
+  
+  
+  
 <?php
 include 'animalpage.php';
 if (isset($_POST['check'])) {
-    $animalid = $_POST['animal_id'];
+    $animalid = $_POST['Species'];
     $dbconnect = mysqli_connect('localhost', 'root', 'root', 'wildlyfe')or die("initial host/db connection problem");
     $sql = "SELECT Food_Item_ID FROM Eats e, AnimalLivesIn ali WHERE ali.Animal_ID=e.Animal_ID AND ali.Species='$animalid'";
     $result = mysqli_query($dbconnect,$sql);
@@ -21,5 +28,4 @@ if (isset($_POST['check'])) {
     echo '<a href="animalpage.php">Enter another species!</a>';
     mysqli_close($dbconnect);
 }
-
 ?>
