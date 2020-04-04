@@ -223,7 +223,7 @@ $sql ="INSERT into animallivesin (animal_id, enclosure_id, species)  VALUES ('$a
     if (isset($msg)) {
         echo "<div>" . $msg . "</div>";
     }
-    ?>>
+    ?>
     </div>
 </div>
 </form>
