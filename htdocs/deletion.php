@@ -218,7 +218,7 @@ html, body {
     if (isset($msg)) {
         echo "<div>" . $msg . "</div>";
     }
-    ?>>
+    ?>
         </div>   
   </form>
     </div>
