@@ -173,7 +173,8 @@
     
     <div class="testbox">
     <tr>
-    <h1>Find the most popular visitor(s)!</h1>
+    <h1>Find the most popular visitor(s)! These visitors attended all events.</h1>
+
     </tr>
   </div>
 

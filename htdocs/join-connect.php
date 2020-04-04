@@ -1,3 +1,11 @@
+
+// <!-- <?php -->
+// include 'animalpage.php';
+// if (isset($_POST['check'])) {
+//     $animalid = $_POST['animal_id'];
+  
+  
+  
 <?php
 include 'animalpage.php';
 if (isset($_POST['check'])) {
@@ -20,5 +28,4 @@ if (isset($_POST['check'])) {
     echo '<a href="animalpage.php">Enter another species!</a>';
     mysqli_close($dbconnect);
 }
-
 ?>
