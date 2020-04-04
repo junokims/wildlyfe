@@ -23,7 +23,6 @@ $sql ="INSERT into AnimalLivesIn (Animal_ID, Enclosure_ID, Species)  VALUES ('$a
          }
 }
  ?>
->>>>>>> laura
 <html>
   <head>
     <title>Add a new animal</title>
