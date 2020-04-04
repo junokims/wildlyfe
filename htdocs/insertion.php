@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<?php  include('connect-insertion.php'); ?>
 
-<!DOCTYPE html>
-=======
 <?php  include('connect.php'); ?>
 <!DOCTYPE html>
 <?php
@@ -37,21 +33,7 @@ $sql ="INSERT into AnimalLivesIn (Animal_ID, Enclosure_ID, Species)  VALUES ('$a
       html, body {
       min-height: 100%;
       }
-<<<<<<< HEAD
-      body, div, form, input, select, p {
-=======
-      body {
-       background-image: url("wildlife8.PNG");
-      padding: 100;
-      margin: 20000;
-      outline: none;
-      font-family: Roboto, Arial, sans-serif;
-      font-size: 14px;
-      color: #666;
-      line-height: 22px;
-      }
           div, form, input, select, p {
->>>>>>> laura
       padding: 100;
       margin: 20000;
       outline: none;
@@ -203,28 +185,8 @@ $sql ="INSERT into AnimalLivesIn (Animal_ID, Enclosure_ID, Species)  VALUES ('$a
     </style>
   </head>
   <body>
-    <?php if (isset($_SESSION['message'])): ?>
-<<<<<<< HEAD
-	<div class="msg">
-		<?php 
-			echo $_SESSION['message']; 
-			unset($_SESSION['message']);
-		?>
-	</div>
-<?php endif ?>
-    <div class="testbox">
-      <form action="connect-insertion.php" method="post">
-=======
-        <div class="msg">
-                <?php 
-                        echo $_SESSION['message']; 
-                        unset($_SESSION['message']);
-                ?>
-        </div>
-<?php endif ?>
     <div class="testbox">
       <form  name="form"  method="post">
->>>>>>> laura
         <h1>Add a new animal!</h1>
         <p>add his/her details below</p>
         <hr/>
@@ -253,7 +215,6 @@ $sql ="INSERT into AnimalLivesIn (Animal_ID, Enclosure_ID, Species)  VALUES ('$a
               <option value="Snake">Snake</option>
               <option value="Wolf">Wolf</option>
             </select>
-<<<<<<< HEAD
         </div>
         <div class="item desired-outcome">
           <button type="submit" name="save">Send</button>
@@ -262,7 +223,6 @@ $sql ="INSERT into AnimalLivesIn (Animal_ID, Enclosure_ID, Species)  VALUES ('$a
     </div>
   </body>
 </html>
-=======
 </div>
         <div class="item desired-outcome">
           <button type="submit" name="save">Send</button>
@@ -288,4 +248,3 @@ $sql ="INSERT into AnimalLivesIn (Animal_ID, Enclosure_ID, Species)  VALUES ('$a
  </body>
 </html>
 
->>>>>>> laura
