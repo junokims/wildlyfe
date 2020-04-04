@@ -1,9 +1,9 @@
 # wildlyfe
 Project built by Genevieve (Rogue), Juno and Laura for CPSC 304 at UBC.
 
-To install, first install XAMPP.
+To install, first install XAMPP. You can find XAMPP at https://www.apachefriends.org/index.html
 
-Then, copy the htdocs folder into the directory where you have installed XAMPP. You can find XAMPP at https://www.apachefriends.org/index.html
+Then, copy the htdocs folder into the directory where you have installed XAMPP. 
 
 Open XAMPP Control and press the "Start" button for both Apache and MySQL.
 
