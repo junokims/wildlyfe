@@ -1,10 +1,7 @@
-
-// <!-- <?php -->
-// include 'animalpage.php';
+<!-- // include 'animalpage.php';
 // if (isset($_POST['check'])) {
 //     $animalid = $_POST['animal_id'];
-  
-  
+   -->
   
 <?php
 include 'animalpage.php';
@@ -15,10 +12,11 @@ if (isset($_POST['check'])) {
     $result = mysqli_query($dbconnect,$sql);
     if ($result->num_rows > 0) {
     echo "<table>";
+    echo "<br></br>";
     echo "<tr><th>We feed our $animalid </th></tr>";
     while($row = mysqli_fetch_array($result)) {
         $name = $row['Food_Item_ID'];
-        echo "<tr><td style='width: 200px;'>".$name."</td></tr>";
+        echo "<tr><td style='width: 100px;'>".$name."</td></tr>";
     } 
     echo "</table>";
     } else{
