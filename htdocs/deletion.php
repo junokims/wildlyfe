@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-<?php  include('connect-delete.php'); ?>
-
-=======
 <?php  include('connect.php'); ?>
 <!DOCTYPE html>
 <?php
@@ -27,7 +23,6 @@ else
 }
 }
 ?>
->>>>>>> laura
 <!DOCTYPE html>
 <html>
   <head>
@@ -35,12 +30,10 @@ else
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <style>
-<<<<<<< HEAD
       html, body {
       min-height: 100%;
       }
       body, div, form, input, select, p {
-=======
 html, body {
       min-height: 100%;
       }
@@ -55,7 +48,6 @@ html, body {
       line-height: 22px;
       }
 	  body, div, form, input, select, p {
->>>>>>> laura
       padding: 100;
       margin: 20000;
       outline: none;
@@ -203,13 +195,8 @@ html, body {
       textarea {
       width: calc(100% - 6px);
       }
-<<<<<<< HEAD
       }
     </style>
-=======
-      }   
- </style>
->>>>>>> laura
   </head>
   <body>
     <?php if (isset($_SESSION['message'])): ?>
@@ -221,17 +208,12 @@ html, body {
 	</div>
 <?php endif ?>
     <div class="testbox">
-<<<<<<< HEAD
-      <form action="connect-delete.php" method="post">
-=======
       <form  method="post">
->>>>>>> laura
         <h1>Delete an animal!</h1>
         <p>Enter the ID of the animal you would like to delete below.</p>
         <hr/>
         <div class="item">
           <p>Animal ID</p>
-<<<<<<< HEAD
           <input type="text" name="animal_id" placeholder="Full name" />
         </div>
         <div class="item desired-outcome">
@@ -241,7 +223,6 @@ html, body {
     </div>
   </body>
 </html>
-=======
           <input type="text" name="animal_id" placeholder="Animal ID" />
         </div>
         <div class="item desired-outcome">
@@ -265,4 +246,3 @@ html, body {
 </div>
   </body>
 </html>
->>>>>>> laura
