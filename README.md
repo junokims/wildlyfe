@@ -36,7 +36,7 @@ First we will need to edit privileges by going to the User Accounts Tab and clic
 
 <img src= "htdocs/Installer8.PNG" >
 
-Then go on the login tab and navigate to the change password tab, where you will change it to root.
+Then go on the login tab and navigate to the change password tab, where you will change it to root. You will also want to ensure that the config.inc file in the xampp/PhpMyAdmin folder has root as the password.
 
 <img src= "htdocs/installer9.PNG" >
 
