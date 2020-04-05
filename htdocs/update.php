@@ -7,97 +7,36 @@ $data = ob_get_clean();
 $conn = OpenCon();
 $msg = '';
 $msg2 ='';
-if (isset($_POST['update2'])) {
+$errormsg = "<p style=';color:#545454;text-align:center'>We found an error while submitting your form, please make sure you're entering the right values</p>";
+if (isset($_POST['update'])) {
 $visitorid = $_POST['visitor_id'];
-$name= $_POST['name'];
-
+$fieldtoupdate= $_POST['field_to_update'];
+$newvalue = $_POST['newval'];
 $res = mysqli_query($conn, "SELECT COUNT(`visitor_id`) c  FROM visitorhascontactinformation WHERE `visitor_id`='$visitorid'");
 $row = mysqli_fetch_assoc($res);
 $C = $row['c'];
-if ($C==1 && strlen($name) <= 30 && !(preg_match('([a-zA-Z].*[0-9]|[0-9].*[a-zA-Z])', $name))){
-$sql = "UPDATE visitorhascontactinformation SET Name = '$name' WHERE visitor_id='$visitorid'";
+
+if ($C==0){ $msg = "<p style='text-align:center'> Unfortunately $visitorid isn't in our records!</p>"; }
+else if ($fieldtoupdate=="name" && ( strlen($newvalue) > 30 ||  (preg_match('([a-zA-Z].*[0-9]|[0-9].*[a-zA-Z])', $newvalue)))){
+$msg= $errormsg;}
+else if ($fieldtoupdate=="dob" && (preg_match( '~[a-z]~', $newvalue))){
+$msg= $errormsg; }
+else if ($fieldtoupdate=="address" && strlen($newvalue) >40) {
+$msg= $errormsg;
+}
+else if ($fieldtoupdate=="email" && strlen($newvalue) > 40){
+$msg= $errormsg;
+}
+else if ($fieldtoupdate=="phone_number" && (strlen($newvalue)!=12 || (preg_match( '~[a-z]~', $newvalue)))){
+$msg= $errormsg;
+} else {
+$sql = "UPDATE visitorhascontactinformation SET $fieldtoupdate = '$newvalue' WHERE visitor_id='$visitorid'";
 $run = mysqli_query($conn, $sql);
-                
-    $msg= "<p style='text-align:center'> name for $visitorid  has been updated!</p>";
-}  else
-{
-  $msg="<p style=';color:#545454;text-align:center'> We found an error while submitting your form, please check the details again</p>";
+    $msg= "<p style='text-align:center'>The $fieldtoupdate for $visitorid has been updated!</p>";
+
+
 }
 }
-
-if (isset($_POST['update3'])) {
-$visitorid = $_POST['visitor_id'];
-$dob= $_POST['birthday'];
-
-$res = mysqli_query($conn, "SELECT COUNT(`visitor_id`) c  FROM visitorhascontactinformation WHERE `visitor_id`='$visitorid'");
-$row = mysqli_fetch_assoc($res);
-$C = $row['c'];
-if ($C==1 && !(preg_match( '~[a-z]~', $dob))) {
-$sql = "UPDATE visitorhascontactinformation SET dob = '$dob' WHERE visitor_id='$visitorid'";
-$run = mysqli_query($conn, $sql);
-    $msg= "<p style='text-align:center'> Date of birth for $visitorid has been updated!</p>";
-} else
-{
-  $msg= "<p style='text-align:center'> We found an error while submitting your form, please check the details again</p>";
-}
-
-}
-
-if (isset($_POST['update4'])) {
-$visitorid = $_POST['visitor_id'];
-$address = $_POST['address'];
-
-
-$res = mysqli_query($conn, "SELECT COUNT(`visitor_id`) c  FROM visitorhascontactinformation WHERE `visitor_id`='$visitorid'");
-$row = mysqli_fetch_assoc($res);
-$C = $row['c'];
-if ($C==1 && strlen($address) <= 40) {
-$sql = "UPDATE visitorhascontactinformation SET address = '$address' WHERE visitor_id='$visitorid'";
-$run = mysqli_query($conn, $sql);
-    $msg= "<p style='text-align:center'> The address for $visitorid has been updated!</p>";
-} else 
-{
-  $msg= "<p style='text-align:center'>We found an error while submitting your form, please check the details again</p>";
-}
-
-}
-
-if (isset($_POST['update5'])) {
-$visitorid = $_POST['visitor_id'];
-$email = $_POST['email'];
-
-$res = mysqli_query($conn, "SELECT COUNT(`visitor_id`) c  FROM visitorhascontactinformation WHERE `visitor_id`='$visitorid'");
-$row = mysqli_fetch_assoc($res);
-$C = $row['c'];
-if ($C==1 && strlen($email) <= 40) {
-$sql = "UPDATE visitorhascontactinformation SET email = '$email' WHERE visitor_id='$visitorid'";
-$run = mysqli_query($conn, $sql);
-    $msg="<p style='text-align:center'> $visitorid has been updated!</p>";
-} else  
-{
-  $msg= "<p style='text-align:center'> We found an error while submitting your form, please check the details again</p>";
-}
-
-}
-
-if (isset($_POST['update6'])) {
-$visitorid = $_POST['visitor_id'];
-$phonenumber = $_POST['phonenumber'];
-
-$res = mysqli_query($conn, "SELECT COUNT(`visitor_id`) c  FROM visitorhascontactinformation WHERE `visitor_id`='$visitorid'");
-$row = mysqli_fetch_assoc($res);
-$C = $row['c'];
-if ($C==1 && strlen($phonenumber)==12 &&  !(preg_match( '~[a-z]~', $phonenumber))) {
-$sql = "UPDATE visitorhascontactinformation SET phone_number = '$phonenumber' WHERE visitor_id='$visitorid'";
-$run = mysqli_query($conn, $sql);
-    $msg="<p style='text-align:center'> $visitorid has been updated!</p>";
-} else  
-{
-  $msg="<p style='text-align:center'> We found an error while submitting your form, please check the details again</h1>";
-}
-
-}
-
 if (isset($_POST['update7'])) {
   $visitorid2 = $_POST['visitor_id2'];
   $eventid = $_POST['event'];
@@ -290,37 +229,32 @@ if (isset($_POST['update7'])) {
     <div class="testbox">
       <form method="post">
         <h1>View or Edit Visitor Details</h1>
-        <p>Find below our current registered visitors. If you would like to update any information
+        <p>If you would like to update any information
           fill the form below our table by entering the ID you would like to update</p>
         <hr/>
         <div class="input-group">
+    <tr>
+      <form method = "post" action="visitorPage.php">
           <p><strong>Enter the ID of the visitor you want to update</strong></p>
           <input type="number" name="visitor_id" placeholder="0" />
-        </div>
+        </div> 
+  <p>Select the field you would like to update</strong></p>
+              <select id="field" name="field_to_update">
+                  <option value="visitordetails"> </option>
+                  <option value="visitor_id">Visitor ID</option>
+                  <option value="name">Name</option>
+                  <option value="dob">DOB</option>
+                  <option value="address">Address</option>
+                  <option value="email">Email Address</option>
+                  <option value="phone_number">Phone Number</option>
+
+              </select>
         <div class="input-group">
-          <p>Name</p>
-          <input type="text" name="name" placeholder="Name"  />
-          <button type="save" name='update2'>Update</button>
- </div>
-        <div class="input-group">
-          <p>Date of Birth</p>
-          <input type="text" name="birthday" placeholder="Dob"/>
-          <button type="save" name='update3'>Update</button>
+          <p>Enter new value</p>
+          <input type="text" name="newval" placeholder="value"  />
+          <button type="save" name='update'>Update</button>
         </div>
-        <div class="item-group">
-          <p>Address</p>
-          <input type="text" name="address" placeholder="Address"/>
-          <button type="save" name='update4'>Update</button>
-        </div>
-        <div class="item-group">
-          <p>Email</p>
-          <input type="text" name="email" placeholder="Email"/>
-          <button type="save" name='update5'>Update</button>
-        </div>
-        <div class="item-group">
-          <p>Phone number</p>
-          <input type="text" name="phonenumber" placeholder="111-111-1111"/>
-          <button type="save" name='update6'>Update</button>
+    </tr>
    <?php
     if (isset($msg)) {
         echo "<div>" . $msg . "</div>";
@@ -332,10 +266,10 @@ if (isset($_POST['update7'])) {
 <div class="testbox">
       <form method="post">
         <h1>Add Visitor to an Event</h1>
-        <p>Select the Visitor ID of the attendee, and the Event ID you would like to add to</p>
+        <p><strong>Select the Visitor ID of the attendee, and the Event ID you would like to add to</p>
         <hr/>
         <div class="input-group">
-          <p><strong>Enter the ID of the visitor you want to update</strong></p>
+          <p>Enter the ID of the visitor you want to update</strong></p>
           <input type="number" name="visitor_id2" placeholder="0" />
         </div>
         <div class="input-group">
@@ -363,3 +297,4 @@ if (isset($_POST['update7'])) {
 	  </div>
   </body>
 </html>
+
