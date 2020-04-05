@@ -20,8 +20,9 @@ echo '<a href="employeetable.php"><enter another species>';
 	echo "</table>";
  } else {
 	echo "0 results";
+	echo "</br>";
+echo "Enter another ID!";
 }
-echo "enter another ID!";
  CloseCon($conn);
 }
  ?>

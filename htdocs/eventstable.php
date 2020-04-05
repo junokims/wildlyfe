@@ -141,8 +141,6 @@ vartical-align: middle;
 </a>
 <table align="center" width= "1000" >
 <h1> Current Events </h1>
-<hr/>
-
 <p> Check Out Our Events! </p> 
 <tr>
 <th>Event ID</th>
@@ -240,7 +238,7 @@ class'>Total Events</th></tr>";
 <?php endif ?>
     <div class="testbox">
       <form action="" method="post">
-        <h1>Find the Average Number of Events Across Per Category</h1>
+        <h1>Find the Average Number of Events Per Category</h1>
         <hr/>
         <div class="item desired-outcome">
           <button type="submit" name="save">Send</button>
