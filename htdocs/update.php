@@ -238,15 +238,14 @@ if (isset($_POST['update7'])) {
           <p><strong>Enter the ID of the visitor you want to update</strong></p>
           <input type="number" name="visitor_id" placeholder="0" />
         </div> 
-  <p>Select the field you would like to update</strong></p>
+  <p>Select the field you would like to update</p>
               <select id="field" name="field_to_update">
                   <option value="visitordetails"> </option>
-                  <option value="visitor_id">Visitor ID</option>
                   <option value="name">Name</option>
                   <option value="dob">DOB</option>
                   <option value="address">Address</option>
                   <option value="email">Email Address</option>
-                  <option value="phone_number">Phone Number</option>
+                  <option value="phone_number"> Phone Number </option>
 
               </select>
         <div class="input-group">
@@ -266,10 +265,10 @@ if (isset($_POST['update7'])) {
 <div class="testbox">
       <form method="post">
         <h1>Add Visitor to an Event</h1>
-        <p><strong>Select the Visitor ID of the attendee, and the Event ID you would like to add to</p>
+        <p>Select the Visitor ID of the attendee, and the Event ID you would like to add to</p>
         <hr/>
         <div class="input-group">
-          <p>Enter the ID of the visitor you want to update</strong></p>
+          <p><strong>Enter the ID of the visitor you want to update</strong></p>
           <input type="number" name="visitor_id2" placeholder="0" />
         </div>
         <div class="input-group">
