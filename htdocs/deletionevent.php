@@ -1,6 +1,28 @@
-<?php  include('connect-deleteevent.php'); ?>
-
+<?php  include('connect.php'); ?>
 <!DOCTYPE html>
+<?php
+ob_start();
+var_dump($myVar);
+$data = ob_get_clean();
+$conn = OpenCon();
+if (isset($_POST['save'])) {
+  $eventid = $_POST['event_id'];
+  $msg = '';
+$res = mysqli_query($conn, "SELECT COUNT(`event_id`) c  FROM events  WHERE `event_id`='$eventid'");
+$row = mysqli_fetch_assoc($res);
+$C = $row['c'];
+if ($C==1)
+{
+  $sql ="DELETE from events  WHERE event_id='$eventid'";
+  $run = mysqli_query($conn, $sql);
+  $msg= "<p style=';color:#545454;;text-align:center'> Event $eventid  has been deleted!</p>";
+}
+else
+{
+  $msg= "<p style=';color:#545454;;text-align:center'> Looks like $eventid isn't in our system. Please try again!</p>";
+}
+}
+?>
 <html>
   <head>
     <title>Remove an Event</title>
@@ -172,16 +194,8 @@
     </style>
   </head>
   <body>
-    <?php if (isset($_SESSION['message'])): ?>
-	<div class="msg">
-		<?php
-			echo $_SESSION['message'];
-			unset($_SESSION['message']);
-		?>
-	</div>
-<?php endif ?>
     <div class="testbox">
-      <form action="connect-deleteevent.php" method="post">
+      <form  method="post">
         <h1>Remove an Event</h1>
         <p>Enter the ID of the event you would like to delete below.</p>
         <hr/>
@@ -192,16 +206,21 @@
         <div class="item desired-outcome">
           <button type="submit" name="save" href="/">Send</button>
         </div>
-		</form>
+	<?php
+    	if (isset($msg)) {
+        echo "<div>" . $msg . "</div>";
+    	}
+   	 ?>	
+	</form>
 	</div>
 	<div class = "testbox">
 	<form action="eventstable.php" method="post">
 	<h1>Back to Events</h1>
         <p>Return to the events page.</p>
-		<div class="item desired-outcome">
-          <button type="submit" name="save">Back</button>
+        <div class="item desired-outcome">
+          <button type="submit" name="save" href="/">Back</button>
         </div>
-      </form>
+ </form>
 	  </div>
   </body>
 </html>

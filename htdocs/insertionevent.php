@@ -1,6 +1,31 @@
-<?php  include('connect-insertionevent.php'); ?>
-
+<?php  include('connect.php'); ?>
 <!DOCTYPE html>
+<?php
+ob_start();
+var_dump($myVar);
+$data = ob_get_clean();
+$conn = OpenCon();
+if (isset($_POST['save'])) {
+  $id = $_POST['event_id'];
+$name = $_POST['name_of_event'];
+$time = $_POST['time'];
+$date = $_POST['event_date'];
+$loc = $_POST['location'];
+$inv = $_POST['number_of_invitees'];
+$type = $_POST['type'];
+  $msg = '';
+$sql ="INSERT into events VALUES ('$id', '$name', '$time', '$date', '$loc', '$inv', '$type')";
+ if(mysqli_query($conn,$sql)){
+                   $msg =  "<p style= 'text-align:center'> Event $id has been added! We'll be sure to let our hosts know.</p>";                   
+                }else{
+                   if(mysqli_errno($conn) == 1062)
+             $msg =  "<p style='text-align:center'> Looks like $id is already in our system. Please try again.</p>"; 
+                else  
+                    $msg =  "<p style='text-align:center'> We've run into an error while submitting your form, please check the details again. </p>";
+
+         }
+}
+?>
 <html>
   <head>
     <title>Add a new animal</title>
@@ -181,7 +206,7 @@ background-image: url("wildlife8.PNG");
 	</div>
 <?php endif ?>
     <div class="testbox">
-      <form action="connect-insertionevent.php" method="post">
+      <form method="post">
         <h1>Add an event</h1>
         <p>Fill out the details below</p>
         <hr/>
@@ -226,7 +251,6 @@ background-image: url("wildlife8.PNG");
 		
 		<div class="item">
 		<p>Date</p>
-			<label for="event_date">Date:</label>
 			<input type="text" name="event_date" placeholder="YYYY-MM-DD" />
 		</div>
 		
@@ -245,13 +269,18 @@ background-image: url("wildlife8.PNG");
               <option value="Community Outreach">Community Outreach</option>
               <option value="Corporate Event">Corporate Event</option>
               <option value="Fundraiser">Fundraiser</option>
-              <option value="Party">Party</option>\
+              <option value="Party">Party</option>
             </select>
         </div>
         <div class="item desired-outcome">
           <button type="submit" name="save">Send</button>
         </div>
-		</form>
+   <?php
+    if (isset($msg)) {
+        echo "<div>" . $msg . "</div>";
+    }
+    ?>	
+	</form>
     </div>
 	<div class = "testbox">
 	<form action="eventstable.php" method="post">
