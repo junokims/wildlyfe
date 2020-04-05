@@ -156,6 +156,7 @@ vartical-align: middle;
     </a>
     <table align="center" >
     <h1> View our animals and their enclosure below! </h1>
+    <hr/>
     <p> As you'll notice, we have a knack for naming our animals non-traditional names, it's part of our charm..</p>
     <p> Below, you'll find you can add a new animal to our facilities, or delete one as needed! Unfortunately you'll be unable to edit any details as of now as you require caretaker approval to do so. </p>
     <br> </br>
@@ -202,12 +203,14 @@ $conn->close();
 
   <div class="testbox">
 <form action="join-connect.php"  method="post">
+<hr/>
+
   <h1> Fun Educational Content Below! </h1>
   <h2> What do we feed our animals? </h2>
   <p> That's a great question, select the Species name  in the textbox below and find out! </p>
   
   <select name= "species">
-    <option value="">Species</option>
+    <option value=""> </option>
     <option value="Hedgehog">Hedgehog</option>
     <option value="Lizard">Lizard</option>
     <option value="Monkey">Monkey</option>

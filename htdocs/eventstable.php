@@ -141,6 +141,8 @@ vartical-align: middle;
 </a>
 <table align="center" width= "1000" >
 <h1> Current Events </h1>
+<hr/>
+
 <p> Check Out Our Events! </p> 
 <tr>
 <th>Event ID</th>

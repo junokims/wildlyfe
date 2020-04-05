@@ -84,20 +84,20 @@ max-width: 56em;
     <br></br>
 
     <div class="testbox">
-        <h1>Welcome to Wildlyfe! Our trusty directory and database</h1>
-        <br></br>
-      <p>View our options below and select according to what you're looking for.</p> 
-      <p>Contact our team at any moment by dialing 1800-wild-lyyfe</p>
+      <h1 align="center">Welcome to Wildlyfe! Your trusty directory and database.</h1>
+      <br></br>
+      <p align="center">View our options below and select according to what you're looking for.</p> 
+      <br></br>
+      <p align="center">Contact our team at any moment by dialing 1-800-WLD-LYFE.</p>
       <br></br>
         </div>
         <div class="grid">
           <div class="module" onclick="location.href='employeetable.php'" style="cursor:pointer;">View our Staff</div>
           <div class="module" onclick="location.href = 'visitorPage.php'" style="cursor:pointer;">View our Visitors</div>
-          <div class="module" onclick="location.href='animalpage.php'" style="cursor:pointer;"> View our animals</div>
-          <div class="module" onclick="location.href='eventstable.php'" style="cursor:pointer;">Look through our events</div>
+          <div class="module" onclick="location.href='animalpage.php'" style="cursor:pointer;"> View our Animals</div>
+          <div class="module" onclick="location.href='eventstable.php'" style="cursor:pointer;">Look Through our Events</div>
         </div>
         <br></br>
-
     </div>
   </div>
   </body>

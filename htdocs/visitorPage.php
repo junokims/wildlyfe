@@ -158,8 +158,9 @@ vartical-align: middle;
   <img src="pet.png" align="center"  width="51" height="51">
 </a>
 <table align="center" width= "1000" >
-<h1> Here are all of our visitors! </h1>
-<p>You can sell this information to make more money! </p>
+<h1 align="center"> Here are all of our visitors! </h1>
+<hr/>
+<p align="center">You can sell this information to make more money! </p>
 <br> </br>
 <tr>
 <th>Visitor ID</th>
@@ -203,9 +204,9 @@ vartical-align: middle;
 <br> </br>
 <div class="button-container" align="center">
 <form method="post">
+<hr/>
     <h1 align="center"> Targeted donation request! </h1> 
     <p align="center"> Who has attended all of our events? </p> 
-    <br> </br>
     <button type="submit" name="check">Check</button>
 </form>
 </div>
@@ -233,6 +234,65 @@ vartical-align: middle;
 ?>
 
 <br> </br>
+
+<div class="testbox" align="center">
+    <tr>
+    <hr/>
+    <h1 align="center">Project something!</h1>
+    </tr>
+  </div>
+
+  <div  align="center"> 
+    <tr>
+      <form method = "post" action="visitorPage.php">
+          <label for="field" >Choose a field to project:</label>
+              <select id="field" name="selected_field">
+                  <option value=""> </option>
+                  <option value="visitor_id">Visitor ID</option>
+                  <option value="name">Name</option>
+                  <option value="dob">DOB</option>
+                  <option value="address">Address</option>
+                  <option value="email">Email Address</option>
+                  <option value="phone_number">Phone Number</option>
+
+              </select>
+              <button type="submit" name="submit_form">Submit</button>      </form>
+
+    </tr>
+  </div>
+  <br> </br>
+  <?php
+if (isset($_POST['submit_form'])) {
+    $someFieldToProject = $_POST['selected_field'];
+    if (empty($someFieldToProject)) {
+        echo "Field is empty";
+    } else {
+        $dbconnect = mysqli_connect('localhost', 'root', 'root', 'wildlyfe')or die("initial host/db connection problem");
+
+
+        $sql = "SELECT ".$someFieldToProject." FROM visitorhascontactinformation";
+
+        $result = mysqli_query($dbconnect,$sql);
+        
+        echo "<table>";
+        echo "<tr><th>$someFieldToProject</th></tr>";
+        
+        while($row = mysqli_fetch_array($result)) {
+            echo "<tr><td style='width: 200px;'>".$row[$someFieldToProject]."</td></tr>";
+        } 
+        
+        echo "</table>";
+        mysqli_close($dbconnect);
+
+    }
+
+}
+
+?>
+
+<br> </br>
+
+
 
 </body>
 </html>
