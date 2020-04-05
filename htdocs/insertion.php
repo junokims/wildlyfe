@@ -18,7 +18,7 @@ $sql ="INSERT into animallivesin (animal_id, enclosure_id, species)  VALUES ('$a
                    if(mysqli_errno($conn) == 1062)
              $msg =  "<p style='text-align:center'> Looks like $animalid is already in our system. Please try again.</p>"; 
                 else  
-                    $msg =  "we've run into an error!:".$query."<br>";
+                    $msg =  "<p style='text-align:center'> We've run into an error while submitting your form, please check the details again. </p>";
 
          }
 }
