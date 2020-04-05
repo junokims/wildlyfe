@@ -266,7 +266,7 @@ if (isset($_POST['update7'])) {
 <div class="testbox">
       <form method="post">
         <h1>Add Visitor to an Event</h1>
-        <p><strong>Select the Visitor ID of the attendee, and the Event ID you would like to add to</p>
+        <p>Select the Visitor ID of the attendee, and the Event ID you would like to add to</p>
         <hr/>
         <div class="input-group">
           <p>Enter the ID of the visitor you want to update</strong></p>
