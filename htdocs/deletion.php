@@ -19,7 +19,7 @@ if ($C==1)
 }
 else
 {
-  $msg= "<p style=';color:#545454;;text-align:center'> Looks like $animalid isn't in our system. Please try again.!</p>";
+  $msg= "<p style=';color:#545454;;text-align:center'> Looks like $animalid isn't in our system. Please try again!</p>";
 }
 }
 ?>
@@ -213,7 +213,9 @@ html, body {
           <input type="text" name="animal_id" placeholder="Animal ID" />
         </div>
         <div class="item desired-outcome">
-          <button type="submit" name="save" >Send</button
+		<button type="submit" name="save" >Send</button>
+		  </div>
+	      </div>
 <?php
     if (isset($msg)) {
         echo "<div>" . $msg . "</div>";
