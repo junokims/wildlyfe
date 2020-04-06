@@ -195,14 +195,6 @@ html, body {
  </style>
   </head>
   <body>
-    <?php if (isset($_SESSION['message'])): ?>
-	<div class="msg">
-		<?php
-			echo $_SESSION['message'];
-			unset($_SESSION['message']);
-		?>
-	</div>
-<?php endif ?>
     <div class="testbox">
       <form  method="post">
         <h1>Delete an animal!</h1>
@@ -214,7 +206,6 @@ html, body {
         </div>
         <div class="item desired-outcome">
 		<button type="submit" name="save" >Send</button>
-		  </div>
 	      </div>
 <?php
     if (isset($msg)) {
